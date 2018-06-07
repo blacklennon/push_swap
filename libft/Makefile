@@ -6,7 +6,7 @@
 #    By: pcarles <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:41:57 by pcarles           #+#    #+#              #
-#    Updated: 2017/12/12 11:38:38 by pcarles          ###   ########.fr        #
+#    Updated: 2018/06/07 17:00:24 by pcarles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "libft.a created."
 
 #rule to compile each .c file in the OBJDIR
 $(OBJDIR)%.o: $(SRCDIR)%.c $(HDRS)
@@ -105,7 +104,6 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(HDRS)
 
 clean:
 	@rm -rf $(OBJDIR)
-	@echo "$(OBJDIR) deleted."
 
 fclean: clean
 	@rm -f $(NAME)
