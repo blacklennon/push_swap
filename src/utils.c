@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/07 17:49:34 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/07 20:13:23 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,14 @@ void	print_lists(t_node *a, t_node *b)
 			a = a->next;
 		if (b)
 			b = b->next;
+	}
+}
+
+void	free_lst(t_node *lst)
+{
+	if (lst)
+	{
+		free_lst(lst->next);
+		free(lst);
 	}
 }

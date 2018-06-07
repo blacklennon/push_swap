@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:16:17 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/07 19:56:55 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/07 20:17:34 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int			main(int ac, char **av)
 	}
 	rev_rotate(&lst_a);
 	print_lists(lst_a, lst_b);
+	free_lst(lst_a);
+	free_lst(lst_b);
 	return (0);
 }
