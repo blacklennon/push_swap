@@ -24,10 +24,11 @@ VPATH = $(shell find src -type d)
 all: $(BIN_1)
 
 $(BIN_1): $(OBJ_1) $(LIBFT)
-	$(CC) -o $@ -I $(INCLDIR) $^
+	@$(CC) -o $@ -I $(INCLDIR) $^
+	@echo "\033[33;32m=== Linking $@\033[0m"
 
 $(LIBFT):
-	$(MAKE) -C $(LIBDIR)
+	@$(MAKE) -C $(LIBDIR)
 
 $(OBJDIR)%.o: %.c  $(HDRS)
 	@mkdir -p $(OBJDIR)

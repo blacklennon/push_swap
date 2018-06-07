@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 00:36:43 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/01 01:06:28 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/07 17:07:01 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ t_node		*push(t_node **from, t_node **to)
 {
 	if (*from && *to)
 	{
-		if (*(from)->next)
-			*(from)->next->prev = NULL;
-		*(to)->prev = *from;
-		*(from)->next = *to
+		if ((*from)->next)
+			(*from)->next->prev = NULL;
+		(*to)->prev = *from;
+		(*from)->next = *to;
 	}
-	return (to);
+	return (*to);
 }
