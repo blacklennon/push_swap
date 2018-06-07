@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:16:17 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/01 01:03:40 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/07 19:56:55 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,13 @@ t_node		*new_node(t_node *lst, int nb)
 	if (!new)
 		return (0);
 	new->data = nb;
-	new->prev = NULL;
 	new->next = NULL;
 	if (!lst)
 		return (new);
-	while (lst->next)
-		lst = lst->next;
-	lst->next = new;
-	new->prev = lst;
-	return (tmp);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (lst);
 }
 
 int			main(int ac, char **av)
@@ -49,18 +47,7 @@ int			main(int ac, char **av)
 		lst_a = new_node(lst_a, ft_atoi(av[i]));
 		i++;
 	}
-	lst_a = swap(lst_a);
-
-	while (lst_a)
-	{
-		printf("%d\n", lst_a->data);
-		lst_a = lst_a->next;
-	}
-	printf("======= B =======");
-	while (lst_b)
-	{
-		printf("%d\n", lst_b->data);
-		lst_b = lst_b->next;
-	}
+	rev_rotate(&lst_a);
+	print_lists(lst_a, lst_b);
 	return (0);
 }
