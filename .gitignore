@@ -1,0 +1,7 @@
+obj/
+*.swp
+libft/obj/
+libft/libft.a
+a.out
+push_swap
+checker
