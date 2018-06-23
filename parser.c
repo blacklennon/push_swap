@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/21 18:16:17 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/23 17:49:15 by pcarles          ###   ########.fr       */
+/*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
+/*   Updated: 2018/06/23 17:49:18 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			main(int ac, char **av)
+int		parse_ints(int ac, char **av, t_node **lst)
 {
-	t_node	*lst_a;
-	t_node	*lst_b;
+	int i;
 
-	lst_a = NULL;
-	lst_b = NULL;
-	if (parse_ints(ac, av, &lst_a))
-		return (0);
-	rev_rotate(&lst_a);
-	print_lists(lst_a, lst_b);
-	free_lst(lst_a);
-	free_lst(lst_b);
+	i = 1;
+	if (ac <= 1)
+		return (-1);
+	while (i < ac)
+	{
+		*lst = new_node(*lst, ft_atoi(av[i]));
+		i++;
+	}
 	return (0);
 }

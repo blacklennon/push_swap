@@ -6,11 +6,30 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/07 20:13:23 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/23 17:49:24 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_node		*new_node(t_node *lst, int nb)
+{
+	t_node	*new;
+	t_node	*tmp;
+
+	tmp = lst;
+	new = malloc(sizeof(*new));
+	if (!new)
+		return (0);
+	new->data = nb;
+	new->next = NULL;
+	if (!lst)
+		return (new);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (lst);
+}
 
 void	print_lists(t_node *a, t_node *b)
 {

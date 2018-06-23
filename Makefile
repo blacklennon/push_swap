@@ -12,7 +12,8 @@ LIBDIR = libft/
 H_FILES = push_swap.h
 C_FILES_1 = main.c \
 			moves.c \
-			utils.c
+			utils.c \
+			parser.c
 
 LIBFT = $(LIBDIR)libft.a
 

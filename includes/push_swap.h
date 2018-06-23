@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/07 20:13:47 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/23 17:49:12 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void				rotate(t_node **lst);
 void				rev_rotate(t_node **lst);
 void				print_lists(t_node *a, t_node *b);
 void				free_lst(t_node *lst);
+int					parse_ints(int ac, char **av, t_node **lst);
+t_node				*new_node(t_node *lst, int nb);
 
 #endif
