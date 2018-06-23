@@ -24,8 +24,8 @@ VPATH = $(shell find src -type d)
 
 all: $(BIN_1)
 
-$(BIN_1): $(OBJ_1) $(LIBFT)
-	@$(CC) -o $@ -I $(INCLDIR) $^
+$(BIN_1): $(OBJ_1) $(HDRS) $(LIBFT)
+	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_1)
 	@echo "\033[33;32m=== Linking $@\033[0m"
 
 $(LIBFT):
