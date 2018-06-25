@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/26 00:16:01 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/26 01:16:12 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ void		free_lst(t_node *lst)
 		free_lst(lst->next);
 		free(lst);
 	}
+}
+
+void		exit_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(0);
 }
