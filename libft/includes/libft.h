@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:53:34 by pcarles           #+#    #+#             */
-/*   Updated: 2017/12/12 11:38:18 by pcarles          ###   ########.fr       */
+/*   Updated: 2017/11/14 14:13:01 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_pow(int n, unsigned int pow);
 int					ft_islower(int c);
 int					ft_isupper(int c);
-void				ft_putnstr(char const *s, int len);
 
 #endif
