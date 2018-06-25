@@ -1,5 +1,5 @@
-BIN_1 = push_swap
-BIN_2 = checker
+BIN_1 = checker
+BIN_2 = push_swap
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -28,7 +28,7 @@ all: $(BIN_1)
 
 $(BIN_1): $(OBJ_1) $(HDRS) $(LIBFT)
 	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_1)
-	@echo "\033[33;32m=== Linking $@\033[0m"
+	@echo "\033[32;1mLinking $@\033[0m"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBDIR)
@@ -36,17 +36,17 @@ $(LIBFT):
 $(OBJDIR)%.o: %.c  $(HDRS)
 	@mkdir -p $(OBJDIR)
 	@$(CC) -o $@ -c $< -I $(INCLDIR) $(FLAGS)
-	@echo "\033[33;32m=== Compilation $@\033[0m"
+	@echo "\033[33mCompilation $@\033[0m"
 
 clean:
 	@rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIBDIR) $@
-	@echo "\x1b[31m=== Remove $(OBJDIR) libft/obj/\033[0m"
+	@echo "\033[31;1mRemove $(OBJDIR)\033[0m"
 
 fclean: clean
 	@rm -f $(BIN_1) $(BIN_2)
 	@$(MAKE) -C $(LIBDIR) $@
-	@echo "\x1b[31m=== Remove $(BIN_1) $(BIN_2) $(LIBFT)\033[0m"
+	@echo "\033[31;1mRemove $(BIN_1) $(BIN_2)\033[0m"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: pcarles <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:41:57 by pcarles           #+#    #+#              #
-#    Updated: 2018/06/24 18:10:32 by pcarles          ###   ########.fr        #
+#    Updated: 2018/06/26 01:24:28 by pcarles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,19 +95,19 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "\033[32;1mCreated $(NAME)\033[0m"
+	@echo "\033[32;1mCreated libft/$(NAME)\033[0m"
 
 $(OBJDIR)%.o: %.c $(HDRS)
 	@mkdir -p $(OBJDIR)
 	@$(CC) -o $@ -c $< -I $(INCLDIR) $(FLAGS)
-	@echo "\033[33mCompilation $@\033[0m"
+	@echo "\033[33mCompilation libft/$@\033[0m"
 
 clean:
 	@rm -rf $(OBJDIR)
-	@echo "\033[31;1mRemove $(OBJDIR)\033[0m"
+	@echo "\033[31;1mRemove libft/$(OBJDIR)\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "\033[31;1mRemove $(NAME)\033[0m"
+	@echo "\033[31;1mRemove libft/$(NAME)\033[0m"
 
 re: fclean all
