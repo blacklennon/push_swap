@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/26 00:13:15 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/26 01:11:01 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			parse_ints(int ac, char **av, t_node **lst)
 
 	i = 1;
 	if (ac <= 1)
-		return (0);
+		exit(0);
 	while (i < ac)
 	{
 		tmp = ft_strdup(av[i]);

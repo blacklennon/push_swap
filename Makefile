@@ -13,7 +13,8 @@ H_FILES = push_swap.h
 C_FILES_1 = main.c \
 			moves.c \
 			utils.c \
-			parser.c
+			parser.c \
+			checker.c
 
 LIBFT = $(LIBDIR)libft.a
 

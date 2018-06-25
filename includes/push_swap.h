@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/23 17:49:12 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/26 01:05:25 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void				print_lists(t_node *a, t_node *b);
 void				free_lst(t_node *lst);
 int					parse_ints(int ac, char **av, t_node **lst);
 t_node				*new_node(t_node *lst, int nb);
+int					check(t_node **lst_a, t_node **lst_b);
+int					is_sort(t_node *lst);
 
 #endif
