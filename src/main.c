@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:16:17 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/23 17:49:15 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/26 00:09:38 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int			main(int ac, char **av)
 
 	lst_a = NULL;
 	lst_b = NULL;
-	if (parse_ints(ac, av, &lst_a))
+	if (parse_ints(ac, av, &lst_a) == -1)
+	{
+		ft_putstr_fd("Error\n", 2);
 		return (0);
-	rev_rotate(&lst_a);
+	}
 	print_lists(lst_a, lst_b);
 	free_lst(lst_a);
 	free_lst(lst_b);

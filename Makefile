@@ -48,3 +48,6 @@ fclean: clean
 	@echo "\x1b[31m=== Remove $(BIN_1) $(BIN_2) $(LIBFT)\033[0m"
 
 re: fclean all
+
+norm:
+	@norminette $(SRCDIR) $(INCLDIR)
