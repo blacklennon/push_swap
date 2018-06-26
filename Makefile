@@ -15,18 +15,28 @@ C_FILES_1 = moves.c \
 			parser.c \
 			checker.c
 
+C_FILES_2 = push_swap.c \
+			parser.c \
+			utils.c
+
 LIBFT = $(LIBDIR)libft.a
 
 SRC_1 = $(addprefix $(SRCDIR), $(C_FILES_1))
 OBJ_1 = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_1))))
+SRC_2 = $(addprefix $(SRCDIR), $(C_FILES_2))
+OBJ_2 = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_2))))
 HDRS = $(addprefix $(INCLDIR), $(H_FILES))
 
 VPATH = $(shell find src -type d)
 
-all: $(BIN_1)
+all: $(BIN_1) $(BIN_2)
 
 $(BIN_1): $(OBJ_1) $(HDRS) $(LIBFT)
 	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_1)
+	@echo "\033[32;1mLinking $@\033[0m"
+
+$(BIN_2): $(OBJ_2) $(HDRS) $(LIBFT)
+	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_2)
 	@echo "\033[32;1mLinking $@\033[0m"
 
 $(LIBFT):

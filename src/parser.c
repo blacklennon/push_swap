@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/26 01:11:01 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/26 11:26:54 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,25 @@ static int	arg_is_valid(char *arg)
 	return (1);
 }
 
+static void	is_in_list(int nb, t_node *lst)
+{
+	while (lst)
+	{
+		if (lst->data == nb)
+			exit_error();
+		lst = lst->next;
+	}
+}
+
 static void	put_arg(char *arg, t_node **lst)
 {
+	int		tmp;
+
 	while (*arg)
 	{
-		*lst = new_node(*lst, ft_atoi(arg));
+		tmp = ft_atoi(arg);
+		is_in_list(tmp, *lst);		
+		*lst = new_node(*lst, tmp);
 		while (*arg == ' ' && *arg)
 			arg++;
 		while ((ft_isdigit(*arg) || *arg == '-') && *arg)
