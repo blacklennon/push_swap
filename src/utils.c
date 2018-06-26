@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/26 01:16:12 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/26 11:07:39 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,18 @@ void		exit_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(0);
+}
+
+int			is_sort(t_node *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst->next)
+	{
+		if (lst->data < lst->next->data)
+			lst = lst->next;
+		else
+			return (0);
+	}
+	return (1);
 }

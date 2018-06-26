@@ -10,8 +10,7 @@ INCLDIR = includes/
 LIBDIR = libft/
 
 H_FILES = push_swap.h
-C_FILES_1 = main.c \
-			moves.c \
+C_FILES_1 = moves.c \
 			utils.c \
 			parser.c \
 			checker.c
