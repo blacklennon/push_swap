@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/29 01:43:59 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/29 05:10:58 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@ typedef struct		s_node
 	struct s_node	*next;
 }					t_node;
 
+typedef struct		s_lists
+{
+	t_node			*a;
+	t_node			*b;
+}					t_lists;
+
 int					main(int ac, char **av);
-void				swap(t_node *lst);
-void				push(t_node **from, t_node **to);
-void				rotate(t_node **lst);
-void				rev_rotate(t_node **lst);
+void				swap(t_node *lst, char *to_write);
+void				push(t_node **from, t_node **to, char *to_write);
+void				rotate(t_node **lst, char *to_write);
+void				rev_rotate(t_node **lst, char *to_write);
 void				print_lists(t_node *a, t_node *b);
 void				free_lst(t_node *lst);
 int					parse_ints(int ac, char **av, t_node **lst);

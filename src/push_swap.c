@@ -6,11 +6,17 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:09:21 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/26 11:16:55 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/29 05:37:46 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	sort(t_list **a, t_list **b)
+{
+	if ((*a)->data > (*a)->next->data)
+		push(a, b, "pb");
+}
 
 int			main(int ac, char **av)
 {

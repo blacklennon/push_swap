@@ -6,13 +6,13 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 00:36:43 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/07 20:04:49 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/29 05:01:03 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		swap(t_node *lst)
+void		swap(t_node *lst, char *to_write)
 {
 	int		tmp;
 
@@ -22,9 +22,11 @@ void		swap(t_node *lst)
 		lst->next->data = lst->data;
 		lst->data = tmp;
 	}
+	if (to_write)
+		ft_putendl(to_write);
 }
 
-void		push(t_node **from, t_node **to)
+void		push(t_node **from, t_node **to, char *to_write)
 {
 	t_node	*tmp;
 
@@ -34,10 +36,12 @@ void		push(t_node **from, t_node **to)
 		*to = *from;
 		*from = (*from)->next;
 		(*to)->next = tmp;
-	}
+	}	
+	if (to_write)
+		ft_putendl(to_write);
 }
 
-void		rotate(t_node **lst)
+void		rotate(t_node **lst, char *to_write)
 {
 	t_node	*tmp;
 
@@ -50,9 +54,11 @@ void		rotate(t_node **lst)
 		*lst = (*lst)->next;
 		tmp->next->next = NULL;
 	}
+	if (to_write)
+		ft_putendl(to_write);
 }
 
-void		rev_rotate(t_node **lst)
+void		rev_rotate(t_node **lst, char *to_write)
 {
 	t_node	*tmp;
 
@@ -71,4 +77,6 @@ void		rev_rotate(t_node **lst)
 				tmp = tmp->next;
 		}
 	}
+	if (to_write)
+		ft_putendl(to_write);
 }
