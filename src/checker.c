@@ -6,14 +6,14 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/26 11:07:37 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/06/29 01:45:19 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
 
-int			check(t_node **lst_a, t_node **lst_b)
+static int	check(t_node **lst_a, t_node **lst_b)
 {
 	char	*tmp;
 
@@ -50,8 +50,6 @@ int			check(t_node **lst_a, t_node **lst_b)
 			rev_rotate(lst_a);
 			rev_rotate(lst_b);
 		}
-		else if (!ft_strcmp(tmp, ""))
-			return (0);
 		else
 			return (-1);
 	}
