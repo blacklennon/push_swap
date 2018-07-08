@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 00:36:43 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/29 05:01:03 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/08 04:51:42 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		push(t_node **from, t_node **to, char *to_write)
 		*to = *from;
 		*from = (*from)->next;
 		(*to)->next = tmp;
-	}	
+	}
 	if (to_write)
 		ft_putendl(to_write);
 }

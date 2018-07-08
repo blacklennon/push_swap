@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/29 05:02:35 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/08 04:53:04 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ static int	check(t_node **lst_a, t_node **lst_b)
 	while (get_next_line(0, &tmp))
 	{
 		if (!ft_strcmp(tmp, "sa"))
-			swap(*lst_a, NULL);	
+			swap(*lst_a, NULL);
 		else if (!ft_strcmp(tmp, "sb"))
 			swap(*lst_b, NULL);
 		else if (!ft_strcmp(tmp, "ss"))
 		{
 			swap(*lst_a, NULL);
 			swap(*lst_b, NULL);
-		}	
+		}
 		else if (!ft_strcmp(tmp, "pa"))
 			push(lst_b, lst_a, NULL);
 		else if (!ft_strcmp(tmp, "pb"))
-			push(lst_a, lst_b, NULL);	
+			push(lst_a, lst_b, NULL);
 		else if (!ft_strcmp(tmp, "ra"))
 			rotate(lst_a, NULL);
 		else if (!ft_strcmp(tmp, "rb"))
