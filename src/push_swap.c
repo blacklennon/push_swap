@@ -6,16 +6,65 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:09:21 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/29 05:37:46 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/08 04:48:03 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort(t_list **a, t_list **b)
+static int	*transform_list_in_tab(t_node *lst)
 {
-	if ((*a)->data > (*a)->next->data)
-		push(a, b, "pb");
+	int		i;
+	int		*res;
+
+	i = get_list_len(lst);
+	res = (int *)ft_memalloc(sizeof(*res) * i + 1);
+	if (!res)
+		exit_error();
+	*res = i;
+	i = 1;
+	while (lst)
+	{
+		res[i] = lst->data;
+		i++;
+		lst = lst->next;
+	}
+	return (res);
+}
+
+static int	*sort_tab(int *tab, int len)
+{
+	int		i;
+	int		j;
+	int		x;
+
+	i = 1;
+	while (i < len)
+	{
+		x = tab[i];
+		j = i;
+		while (j > 0 && tab[j - 1] > x)
+		{
+			tab[j] = tab[j - 1];
+			j = j - 1;
+		}
+		tab[j] = x;
+		i++;
+	}
+	return (tab);
+}
+
+static void	sort(t_node **a, t_node **b)
+{
+	int		median;
+	int		*tab;
+
+	(void)b;
+	tab = transform_list_in_tab(*a);
+	sort_tab(tab + 1, *tab);
+	median = tab[(*tab / 2) + 1];
+	printf("mediane: %d\n", median);
+	free(tab);
 }
 
 int			main(int ac, char **av)
@@ -27,6 +76,7 @@ int			main(int ac, char **av)
 	lst_b = NULL;
 	if (parse_ints(ac, av, &lst_a) == -1)
 		exit_error();
+	sort(&lst_a, &lst_b);
 	print_lists(lst_a, lst_b);
 	free_lst(lst_a);
 	free_lst(lst_b);

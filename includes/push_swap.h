@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/06/29 05:10:58 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/08 04:47:50 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int					parse_ints(int ac, char **av, t_node **lst);
 t_node				*new_node(t_node *lst, int nb);
 int					is_sort(t_node *lst);
 void				exit_error(void);
+int					get_list_len(t_node *lst);
 
 #endif
