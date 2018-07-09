@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdlib.h>
+#include "libft.h"
 #include "get_next_line.h"
+#include "push_swap.h"
 
 static int	check(t_node **lst_a, t_node **lst_b)
 {

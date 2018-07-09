@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "libft.h"
 #include "push_swap.h"
 
 static int	arg_is_valid(char *arg)
@@ -23,16 +25,6 @@ static int	arg_is_valid(char *arg)
 	return (1);
 }
 
-static void	is_in_list(int nb, t_node *lst)
-{
-	while (lst)
-	{
-		if (lst->data == nb)
-			exit_error();
-		lst = lst->next;
-	}
-}
-
 static void	put_arg(char *arg, t_node **lst)
 {
 	int		tmp;
@@ -40,7 +32,8 @@ static void	put_arg(char *arg, t_node **lst)
 	while (*arg)
 	{
 		tmp = ft_atoi(arg);
-		is_in_list(tmp, *lst);
+		if (is_in_list(tmp, '=', *lst))
+			exit_error();
 		*lst = new_node(*lst, tmp);
 		while (*arg == ' ' && *arg)
 			arg++;

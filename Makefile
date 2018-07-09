@@ -2,7 +2,7 @@ BIN_1 = checker
 BIN_2 = push_swap
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+C_FLAGS = -Wall -Wextra -Werror
 
 OBJDIR = obj/
 SRCDIR = src/
@@ -10,15 +10,17 @@ INCLDIR = includes/
 LIBDIR = libft/
 
 H_FILES = push_swap.h
-C_FILES_1 = moves.c \
-			utils.c \
+C_FILES_1 = checker.c \
 			parser.c \
-			checker.c
+			moves.c \
+			utils.c \
+			utils_algo.c
 
 C_FILES_2 = push_swap.c \
-			moves.c \
 			parser.c \
-			utils.c
+			moves.c \
+			utils.c \
+			algo/utils_algo.c
 
 LIBFT = $(LIBDIR)libft.a
 
@@ -28,7 +30,7 @@ SRC_2 = $(addprefix $(SRCDIR), $(C_FILES_2))
 OBJ_2 = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_2))))
 HDRS = $(addprefix $(INCLDIR), $(H_FILES))
 
-VPATH = $(shell find src -type d)
+VPATH = $(shell find $(SRCDIR) -type d)
 
 all: $(BIN_1) $(BIN_2)
 
@@ -43,9 +45,9 @@ $(BIN_2): $(OBJ_2) $(HDRS) $(LIBFT)
 $(LIBFT):
 	@$(MAKE) -C $(LIBDIR)
 
-$(OBJDIR)%.o: %.c  $(HDRS)
+$(OBJDIR)%.o: %.c $(HDRS)
 	@mkdir -p $(OBJDIR)
-	@$(CC) -o $@ -c $< -I $(INCLDIR) $(FLAGS)
+	@$(CC) -o $@ -c $< -I $(INCLDIR) $(C_FLAGS)
 	@echo "\033[33mCompilation $@\033[0m"
 
 clean:

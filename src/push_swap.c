@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include "libft.h"
 #include "push_swap.h"
 
 static int	*transform_list_in_tab(t_node *lst)

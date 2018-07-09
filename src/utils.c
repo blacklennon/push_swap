@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 #include "push_swap.h"
 
 t_node		*new_node(t_node *lst, int nb)
