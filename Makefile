@@ -16,6 +16,7 @@ C_FILES_1 = moves.c \
 			checker.c
 
 C_FILES_2 = push_swap.c \
+			moves.c \
 			parser.c \
 			utils.c
 

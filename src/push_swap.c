@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:09:21 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/08 04:48:03 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/09 01:53:08 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,23 @@ static void	sort(t_node **a, t_node **b)
 {
 	int		median;
 	int		*tab;
+	int		i;
 
 	(void)b;
+	i = 0;
 	tab = transform_list_in_tab(*a);
 	sort_tab(tab + 1, *tab);
 	median = tab[(*tab / 2) + 1];
+	while (i <= *tab)
+	{
+		system("clear");
+		print_lists(*a, *b);
+		sleep(1);
+		while ((*a)->data > median)
+			push(a, b, "pb");
+		rotate(a, "ra");
+		i++;
+	}
 	printf("mediane: %d\n", median);
 	free(tab);
 }

@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/08 04:47:50 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/09 01:16:13 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include "libft.h"
 
 typedef struct		s_node
