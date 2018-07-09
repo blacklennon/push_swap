@@ -35,3 +35,20 @@ int		is_in_list(int nb, char operation, t_node *lst)
 	}
 	return (0);
 }
+
+int		which_side_of_list(int nb, t_node *lst)
+{
+	int	len;
+	int	i;
+
+	len = get_list_len(lst);
+	i = 0;
+	while (lst)
+	{
+		if (lst->data == nb)
+			break ;
+		i++;
+		lst = lst->next;
+	}
+	return (i > (len / 2) ? 2 : 1);
+}

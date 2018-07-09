@@ -69,13 +69,11 @@ static void	sort(t_node **a, t_node **b)
 	tab = transform_list_in_tab(*a);
 	sort_tab(tab + 1, *tab);
 	median = tab[(*tab / 2) + 1];
-	while (i <= *tab)
+	while (is_in_list(median, '>', *a))
 	{
-		system("clear");
-		print_lists(*a, *b);
-		sleep(1);
-		while ((*a)->data > median)
-			push(a, b, "pb");
+		if ((*a)->data > median)
+			while ((*a)->data > median)
+				push(a, b, "pb");
 		rotate(a, "ra");
 		i++;
 	}
