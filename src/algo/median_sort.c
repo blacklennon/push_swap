@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/10 01:56:44 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/12 08:00:02 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,42 @@ static int	*sort_tab(int *tab, int len)
 	return (tab);
 }
 
+static void	median_sort_pt2(t_node **a, t_node **b)
+{
+	t_node	*tmp;
+	while (get_list_len(*b) > 0)
+	{
+		tmp = get_min(*b);
+		if (tmp == *b)
+		{
+			push(b, a, "pa");
+			rotate(a, "ra");
+		}
+		else
+		{
+			while (*b != tmp)
+				rev_rotate(b, "rra");
+			push(b, a, "pa");
+			rotate(a, "ra");
+		}
+	}
+}
+
+static void	sort_three_ints(t_node **lst)
+{
+	t_node	*tmp;
+
+	tmp = get_min(*lst);
+	if (tmp == *lst)
+	{
+		if (get_min((*lst)->next) != (*lst)->next)
+		{
+			rotate(lst, "ra");
+			swap(*lst, "sa");
+			rev_rotate(lst, "rra");
+		}
+	}
+}
 void		median_sort(t_node **a, t_node **b)
 {
 	int		median;
@@ -64,8 +100,11 @@ void		median_sort(t_node **a, t_node **b)
 	int		i;
 
 	i = 0;
-	if (get_list_len(*a) <= 3)
+	if (get_list_len(*a) <= 3 || is_sort(*a))
+	{
+		sort_three_ints(a);
 		return ;
+	}
 	tab = transform_list_in_tab(*a);
 	sort_tab(tab + 1, *tab);
 	median = tab[(*tab / 2) + 1];
@@ -74,10 +113,12 @@ void		median_sort(t_node **a, t_node **b)
 		if ((*a)->data > median)
 			while ((*a)->data > median)
 				push(a, b, "pb");
-		rotate(a, "ra");
+		else
+			rotate(a, "ra");
 		i++;
 	}
 	median_sort(a, b);
-	printf("mediane: %d\n", median);
+	median_sort_pt2(a, b);
+//	printf("mediane: %d\n", median);
 	free(tab);
 }
