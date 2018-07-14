@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 00:36:43 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/08 04:51:42 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/14 04:55:18 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void		swap(t_node *lst, char *to_write)
 		tmp = lst->next->data;
 		lst->next->data = lst->data;
 		lst->data = tmp;
+		if (to_write)
+			ft_putendl(to_write);
 	}
-	if (to_write)
-		ft_putendl(to_write);
 }
 
 void		push(t_node **from, t_node **to, char *to_write)
@@ -37,9 +37,9 @@ void		push(t_node **from, t_node **to, char *to_write)
 		*to = *from;
 		*from = (*from)->next;
 		(*to)->next = tmp;
+		if (to_write)
+			ft_putendl(to_write);
 	}
-	if (to_write)
-		ft_putendl(to_write);
 }
 
 void		rotate(t_node **lst, char *to_write)
@@ -54,9 +54,9 @@ void		rotate(t_node **lst, char *to_write)
 		tmp->next = *lst;
 		*lst = (*lst)->next;
 		tmp->next->next = NULL;
+		if (to_write)
+			ft_putendl(to_write);
 	}
-	if (to_write)
-		ft_putendl(to_write);
 }
 
 void		rev_rotate(t_node **lst, char *to_write)
@@ -77,7 +77,7 @@ void		rev_rotate(t_node **lst, char *to_write)
 			else
 				tmp = tmp->next;
 		}
+		if (to_write)
+			ft_putendl(to_write);
 	}
-	if (to_write)
-		ft_putendl(to_write);
 }

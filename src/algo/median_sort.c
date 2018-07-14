@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/12 08:00:02 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/14 05:51:48 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ static void	sort_three_ints(t_node **lst)
 		}
 	}
 }
-void		median_sort(t_node **a, t_node **b)
+
+static void	median_sort_pt1(t_node **a, t_node **b)
 {
 	int		median;
 	int		*tab;
@@ -102,7 +103,8 @@ void		median_sort(t_node **a, t_node **b)
 	i = 0;
 	if (get_list_len(*a) <= 3 || is_sort(*a))
 	{
-		sort_three_ints(a);
+		if (!is_sort(*a))
+			sort_three_ints(a);
 		return ;
 	}
 	tab = transform_list_in_tab(*a);
@@ -118,7 +120,12 @@ void		median_sort(t_node **a, t_node **b)
 		i++;
 	}
 	median_sort(a, b);
-	median_sort_pt2(a, b);
 //	printf("mediane: %d\n", median);
 	free(tab);
+}
+
+void		median_sort(t_node **a, t_node **b)
+{
+	median_sort_pt1(a, b);
+	median_sort_pt2(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/12 07:47:40 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/14 04:47:02 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int			main(int ac, char **av)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
-//	print_lists(lst_a, lst_b);
+	print_lists(lst_a, lst_b);
 	free_lst(lst_a);
 	free_lst(lst_b);
 	return (0);
