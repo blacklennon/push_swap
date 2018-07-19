@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/14 05:51:48 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/19 18:47:50 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,17 @@ static int	*sort_tab(int *tab, int len)
 static void	median_sort_pt2(t_node **a, t_node **b)
 {
 	t_node	*tmp;
+
 	while (get_list_len(*b) > 0)
 	{
-		tmp = get_min(*b);
+		tmp = get_max(*b);
 		if (tmp == *b)
-		{
 			push(b, a, "pa");
-			rotate(a, "ra");
-		}
 		else
 		{
 			while (*b != tmp)
-				rev_rotate(b, "rra");
+				rev_rotate(b, "rrb");
 			push(b, a, "pa");
-			rotate(a, "ra");
 		}
 	}
 }
@@ -119,7 +116,7 @@ static void	median_sort_pt1(t_node **a, t_node **b)
 			rotate(a, "ra");
 		i++;
 	}
-	median_sort(a, b);
+	median_sort_pt1(a, b);
 //	printf("mediane: %d\n", median);
 	free(tab);
 }
@@ -128,4 +125,7 @@ void		median_sort(t_node **a, t_node **b)
 {
 	median_sort_pt1(a, b);
 	median_sort_pt2(a, b);
+	rev_rotate(a, "rra");
+	rev_rotate(a, "rra");
+	rev_rotate(a, "rra");
 }

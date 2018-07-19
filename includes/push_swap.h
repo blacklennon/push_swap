@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/12 07:20:08 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/19 18:32:46 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int					get_list_len(t_node *lst);
 int					is_in_list(int nb, char operation, t_node *lst);
 void				median_sort(t_node **a, t_node **b);
 t_node				*get_min(t_node *lst);
+t_node				*get_max(t_node *lst);
 
 #endif

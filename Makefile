@@ -2,7 +2,7 @@ BIN_1 = checker
 BIN_2 = push_swap
 
 CC = gcc
-C_FLAGS = -Wall -Wextra -Werror
+C_FLAGS = -Wall -Wextra
 
 OBJDIR = obj/
 SRCDIR = src/

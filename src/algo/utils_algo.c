@@ -6,10 +6,11 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 23:00:33 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/12 07:12:59 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/19 18:33:23 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
 
 int			is_in_list(int nb, char operation, t_node *lst)
@@ -53,16 +54,34 @@ int			which_side_of_list(int nb, t_node *lst)
 	return (i > (len / 2) ? 2 : 1);
 }
 
-t_node		*get_min(t_node *lst)
+static t_node	*get_min_max(t_node *lst, char c)
 {
-	t_node	*tmp;
+	t_node		*tmp;
 
 	tmp = lst;
+	if (c != '<' && c != '>')
+		return (NULL);
 	while (lst)
 	{
-		if (lst->data < tmp->data)
-			tmp = lst;
+		if (c == '<')
+		{
+			if (lst->data < tmp->data)
+				tmp = lst;
+		}
+		else if (c == '>')
+			if (lst->data > tmp->data)
+				tmp = lst;
 		lst = lst->next;
 	}
 	return (tmp);
+}
+
+t_node			*get_min(t_node *lst)
+{
+	return (get_min_max(lst, '<'));
+}
+
+t_node			*get_max(t_node *lst)
+{
+	return (get_min_max(lst, '>'));
 }
