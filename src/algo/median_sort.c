@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/19 18:47:50 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/20 16:24:14 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static void	sort_three_ints(t_node **lst)
 {
 	t_node	*tmp;
 
+	if (is_sort(*lst))
+		return ;
 	tmp = get_min(*lst);
 	if (tmp == *lst)
 	{
@@ -89,6 +91,12 @@ static void	sort_three_ints(t_node **lst)
 			rev_rotate(lst, "rra");
 		}
 	}
+	else
+	{
+		while (tmp != *lst)
+			rotate(lst, "ra");
+	}
+	sort_three_ints(lst);
 }
 
 static void	median_sort_pt1(t_node **a, t_node **b)
