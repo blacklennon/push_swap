@@ -2,7 +2,8 @@ BIN_1 = checker
 BIN_2 = push_swap
 
 CC = gcc
-C_FLAGS = -Wall -Wextra
+C_FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+LD_FLAGS = -g3 -fsanitize=address
 
 OBJDIR = obj/
 SRCDIR = src/
@@ -36,11 +37,11 @@ VPATH = $(shell find $(SRCDIR) -type d)
 all: $(BIN_1) $(BIN_2)
 
 $(BIN_1): $(OBJ_1) $(HDRS) $(LIBFT)
-	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_1)
+	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_1) $(LD_FLAGS)
 	@echo "\033[32;1mLinking $@\033[0m"
 
 $(BIN_2): $(OBJ_2) $(HDRS) $(LIBFT)
-	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_2)
+	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_2) $(LD_FLAGS)
 	@echo "\033[32;1mLinking $@\033[0m"
 
 $(LIBFT):

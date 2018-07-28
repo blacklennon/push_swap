@@ -6,12 +6,13 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/19 18:32:46 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/28 21:00:32 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define DEBUG 1
 
 typedef struct		s_node
 {
@@ -35,7 +36,7 @@ void				free_lst(t_node *lst);
 int					parse_ints(int ac, char **av, t_node **lst);
 t_node				*new_node(t_node *lst, int nb);
 int					is_sort(t_node *lst);
-void				exit_error(void);
+void				exit_error(char *str);
 int					get_list_len(t_node *lst);
 int					is_in_list(int nb, char operation, t_node *lst);
 void				median_sort(t_node **a, t_node **b);

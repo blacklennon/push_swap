@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/20 16:35:33 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/28 21:01:28 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int			main(int ac, char **av)
 	lst_a = NULL;
 	lst_b = NULL;
 	if (parse_ints(ac, av, &lst_a) == -1)
-		exit_error();
+		exit_error("parse error");
 	if (check(&lst_a, &lst_b) == -1)
-		exit_error();
+		exit_error("invalid input");
 	if (is_sort(lst_a) && !lst_b)
 		ft_putstr("OK\n");
 	else

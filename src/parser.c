@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/08 04:51:12 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/28 20:58:10 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	put_arg(char *arg, t_node **lst)
 	{
 		tmp = ft_atoi(arg);
 		if (is_in_list(tmp, '=', *lst))
-			exit_error();
+			exit_error("there is a duplicate");
 		*lst = new_node(*lst, tmp);
 		while (*arg == ' ' && *arg)
 			arg++;

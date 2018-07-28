@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/20 16:24:14 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/07/28 20:56:18 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	*transform_list_in_tab(t_node *lst)
 	int		*res;
 
 	i = get_list_len(lst);
-	res = (int *)ft_memalloc(sizeof(*res) * i + 1);
+	res = (int *)ft_memalloc(sizeof(*res) * (i + 1));
 	if (!res)
-		exit_error();
+		exit_error("malloc in transform_list_in_tab() failed");
 	*res = i;
 	i = 1;
 	while (lst)
