@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/28 21:02:39 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/15 16:27:41 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,15 @@ void		exit_error(char *str)
 	exit(1);
 }
 
+void		exit_usage(void)
+{
+	ft_putstr_fd("usage: ./checker [options] numbers...\n  options:\n    -p, Print the two lists\n", 2);
+	exit(1);
+}
+
 int			is_sort(t_node *lst)
 {
-	if (!lst)
+  	if (!lst)
 		return (0);
 	while (lst->next)
 	{

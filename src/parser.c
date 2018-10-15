@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/28 20:58:10 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/15 20:53:57 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	put_arg(char *arg, t_node **lst)
 	}
 }
 
+// >>TODO<< change the falg system bc can't have
+//          negative numbers at the begining of args.
 int			parse_ints(int ac, char **av, t_node **lst)
 {
 	int		i;
@@ -49,7 +51,9 @@ int			parse_ints(int ac, char **av, t_node **lst)
 
 	i = 1;
 	if (ac <= 1)
-		exit(0);
+		return (-1);;
+	if (*av[i] == '-')
+		i++;
 	while (i < ac)
 	{
 		tmp = ft_strdup(av[i]);
@@ -60,4 +64,26 @@ int			parse_ints(int ac, char **av, t_node **lst)
 		i++;
 	}
 	return (0);
+}
+
+int			parse_flags(int ac, char **av)
+{
+	int		i;
+	int		options;
+
+	i = 1;
+	options = 0;
+	if (ac <= 1)
+		return (-1);
+	while (i < ac && *av[i] == '-')
+	{
+		if (!ft_strcmp(av[i], "-p"))
+			options |= FLAG_PRINT;
+		else if (!ft_strcmp(av[i], "--csv"))
+			options |= FLAG_CSV;
+		else
+			return (-1);
+		i++;
+	}
+	return (options);
 }

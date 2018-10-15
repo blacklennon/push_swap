@@ -6,11 +6,12 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/28 21:01:28 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/15 20:54:24 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft.h"
 #include "get_next_line.h"
 #include "push_swap.h"
@@ -60,20 +61,27 @@ static int	check(t_node **lst_a, t_node **lst_b)
 
 int			main(int ac, char **av)
 {
+	int		options;
 	t_node	*lst_a;
 	t_node	*lst_b;
 
 	lst_a = NULL;
 	lst_b = NULL;
+	options = parse_flags(ac, av);
+	if (options == -1)
+		exit_usage();
 	if (parse_ints(ac, av, &lst_a) == -1)
 		exit_error("parse error");
+	if (!lst_a)
+		exit_error("empty list");
 	if (check(&lst_a, &lst_b) == -1)
-		exit_error("invalid input");
+		exit_error("invalid command (available commads: sx, ss, px, rx, rr, rrx, rrr, with x = a or x = b)");
 	if (is_sort(lst_a) && !lst_b)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
-//	print_lists(lst_a, lst_b);
+	if (options & FLAG_PRINT)
+		print_lists(lst_a, lst_b);
 	free_lst(lst_a);
 	free_lst(lst_b);
 	return (0);

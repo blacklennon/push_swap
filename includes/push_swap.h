@@ -6,13 +6,15 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/28 21:00:32 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/15 20:29:26 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # define DEBUG 1
+# define FLAG_PRINT 0x1
+# define FLAG_CSV 0x2
 
 typedef struct		s_node
 {
@@ -42,5 +44,10 @@ int					is_in_list(int nb, char operation, t_node *lst);
 void				median_sort(t_node **a, t_node **b);
 t_node				*get_min(t_node *lst);
 t_node				*get_max(t_node *lst);
+int					which_side_of_list(int nb, t_node *lst);
+t_node				*get_min_before_last(t_node *lst);
+void				swap_v2(t_node **lst, char *to_write);
+int					parse_flags(int ac, char **av);
+void				exit_usage(void);
 
 #endif

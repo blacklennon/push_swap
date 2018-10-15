@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 00:36:43 by pcarles           #+#    #+#             */
-/*   Updated: 2018/07/14 04:55:18 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/14 18:33:39 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@ void		swap(t_node *lst, char *to_write)
 		tmp = lst->next->data;
 		lst->next->data = lst->data;
 		lst->data = tmp;
+		if (to_write)
+			ft_putendl(to_write);
+	}
+}
+
+void		swap_v2(t_node **lst, char *to_write)
+{
+	t_node	*tmp;
+
+	if (*lst && (*lst)->next)
+	{
+		tmp = (*lst)->next;
+		(*lst)->next = tmp->next;
+		tmp->next = *lst;
+		*lst = tmp;
 		if (to_write)
 			ft_putendl(to_write);
 	}
