@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:09:21 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/14 16:09:32 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/16 14:26:29 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int			main(int ac, char **av)
+int			main(int const ac, char const **av)
 {
 	t_node	*lst_a;
 	t_node	*lst_b;
 
 	lst_a = NULL;
 	lst_b = NULL;
-	if (parse_ints(ac, av, &lst_a) == -1)
+	if (parse(ac, av, &lst_a) == -1)
 		exit_error("parse error");
 	median_sort(&lst_a, &lst_b);
 	free_lst(lst_a);

@@ -6,38 +6,38 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 23:00:33 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/14 18:48:20 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/16 14:51:53 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
-int			is_in_list(int nb, char operation, t_node *lst)
+t_node		*is_in_list(int nb, char operation, t_node *lst)
 {
 	while (lst)
 	{
 		if (operation == '<')
 		{
 			if (lst->data < nb)
-				return (1);
+				return (lst);
 		}
 		else if (operation == '>')
 		{
 			if (lst->data > nb)
-				return (1);
+				return (lst);
 		}
 		else if (operation == '=')
 		{
 			if (lst->data == nb)
-				return (1);
+				return (lst);
 		}
 		lst = lst->next;
 	}
-	return (0);
+	return (NULL);
 }
 
-int			which_side_of_list(int nb, t_node *lst)
+int			which_side_of_list(int nb, t_node *node, t_node *lst)
 {
 	int		len;
 	int		i;
@@ -46,7 +46,9 @@ int			which_side_of_list(int nb, t_node *lst)
 	i = 0;
 	while (lst)
 	{
-		if (lst->data == nb)
+		if (lst == node)
+			break ;
+		if (lst->data == nb && !node)
 			break ;
 		i++;
 		lst = lst->next;

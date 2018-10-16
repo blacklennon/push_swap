@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/15 20:54:24 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/16 14:15:35 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 static int	check(t_node **lst_a, t_node **lst_b)
 {
 	char	*tmp;
+	int		op_counter;
 
+	op_counter = 0;
 	while (get_next_line(0, &tmp))
 	{
 		if (!ft_strcmp(tmp, "sa"))
@@ -55,31 +57,46 @@ static int	check(t_node **lst_a, t_node **lst_b)
 		}
 		else
 			return (-1);
+		op_counter++;
 	}
-	return (0);
+	return (op_counter);
 }
 
-int			main(int ac, char **av)
+int			main(int const ac, char const **av)
 {
 	int		options;
+	int		op_counter;
+	int		list_len;
 	t_node	*lst_a;
 	t_node	*lst_b;
 
 	lst_a = NULL;
 	lst_b = NULL;
-	options = parse_flags(ac, av);
+	options = parse(ac, av, &lst_a);
 	if (options == -1)
 		exit_usage();
-	if (parse_ints(ac, av, &lst_a) == -1)
+	else if (options == -2)
 		exit_error("parse error");
+	list_len = get_list_len(lst_a);
 	if (!lst_a)
 		exit_error("empty list");
-	if (check(&lst_a, &lst_b) == -1)
+	op_counter = check(&lst_a, &lst_b);
+	if (op_counter == -1)
 		exit_error("invalid command (available commads: sx, ss, px, rx, rr, rrx, rrr, with x = a or x = b)");
 	if (is_sort(lst_a) && !lst_b)
-		ft_putstr("OK\n");
+	{
+		if (options & FLAG_CSV)
+			printf("OK;%d;%d\n", list_len, op_counter);
+		else
+			ft_putstr("OK\n");
+	}
 	else
-		ft_putstr("KO\n");
+	{
+		if (options & FLAG_CSV)
+			printf("KO;%d;%d\n", list_len, op_counter);
+		else
+			ft_putstr("KO\n");
+	}
 	if (options & FLAG_PRINT)
 		print_lists(lst_a, lst_b);
 	free_lst(lst_a);
