@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 11:27:13 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 14:56:18 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define DEBUG 1
 # define FLAG_PRINT 0x1
 # define FLAG_CSV 0x2
+# define FLAG_INTERACTIVE 0x4
 
 typedef struct		s_node
 {
@@ -36,6 +37,7 @@ void				rev_rotate(t_node **lst, char *to_write);
 /* ================ Parser ================ */
 
 int					parse(int const ac, char const **av, t_node **lst);
+int					do_op(t_node **a, t_node **b, int options);
 
 /* ================ Utils ================ */
 

@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/16 14:12:36 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 15:07:47 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int			parse(int const ac, char const **av, t_node **lst)
 			options |= FLAG_PRINT;
 		else if (!ft_strcmp(av[i], "--csv"))
 			options |= FLAG_CSV;
+		else if (!ft_strcmp(av[i], "-i"))
+			options |= FLAG_INTERACTIVE;
 		else if (arg_is_valid(av[i]))
 			break;
 		else

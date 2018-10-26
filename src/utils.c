@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/15 16:27:41 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 15:15:31 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ t_node		*new_node(t_node *lst, int nb)
 
 void		print_lists(t_node *a, t_node *b)
 {
-	printf(" a | b \n=======\n");
+	printf("  a  |  b  \n-----+-----\n");
 	while (a || b)
 	{
-		printf("%2d | %-2d\n", a ? a->data : 0, b ? b->data : 0);
+		printf("%4d | %-4d\n", a ? a->data : 0, b ? b->data : 0);
 		if (a)
 			a = a->next;
 		if (b)

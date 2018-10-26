@@ -14,6 +14,7 @@ H_FILES = push_swap.h
 C_FILES_1 = checker.c \
 			parser.c \
 			moves.c \
+			do_op.c \
 			utils.c \
 			utils_algo.c
 
