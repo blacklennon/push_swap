@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 14:56:18 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 19:16:32 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_node				*get_max_before_last(t_node *lst);
 
 /* ================ Algo ================ */
 
+void				sort_three_or_less_ints(t_node **lst, char lst_name);
 void				median_presort(t_node **a, t_node **b);
 void				insert_sort(t_node **a, t_node **b);
 void				sort(t_node **a, t_node **b);

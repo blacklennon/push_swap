@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 13:53:10 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 19:15:14 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,6 @@ static int	*sort_tab(int *tab, int len)
 	return (tab);
 }
 
-static void	sort_three_ints(t_node **a, t_node **b)
-{
-	t_node	*min;
-
-	if (is_sort(*a))
-		return ;
-	min = get_min(*a);
-	if (*a == min)
-	{
-		push(a, b, "pb");
-		swap(a, "sa");
-		push(b, a, "pa");
-	}
-	else if ((*a)->next == min)
-		rotate(a, "ra");
-	else
-		rev_rotate(a, "rra");
-	if (!is_sort(*a))
-		sort_three_ints(a, b);
-}
 
 void		median_presort(t_node **a, t_node **b)
 {
@@ -109,7 +89,7 @@ void		median_presort(t_node **a, t_node **b)
 		free(tab);
 	}
 	if (!is_sort(*a))
-		sort_three_ints(a, b);
+		sort_three_or_less_ints(a, 'a');
 	return ;
 }
 

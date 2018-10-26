@@ -23,6 +23,7 @@ C_FILES_2 = push_swap.c \
 			moves.c \
 			utils.c \
 			algo/utils_algo.c \
+			algo/general_algo.c \
 			algo/median_sort.c \
 			algo/sort.c
 
