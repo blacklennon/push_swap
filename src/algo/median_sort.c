@@ -6,30 +6,29 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/23 18:47:53 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 13:53:10 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 #include "push_swap.h"
 
 static int	*transform_list_in_tab(t_node *lst)
 {
-	int		i;
+	int		len;
 	int		*res;
 
-	i = get_list_len(lst);
-	res = (int *)ft_memalloc(sizeof(*res) * (i + 1));
+	len = get_list_len(lst);
+	res = (int *)ft_memalloc(sizeof(*res) * (len + 1));
 	if (!res)
 		exit_error("malloc in transform_list_in_tab() failed");
-	*res = i;
-	i = 1;
+	*res = len;
+	len = 1;
 	while (lst)
 	{
-		res[i] = lst->data;
-		i++;
+		res[len] = lst->data;
+		len++;
 		lst = lst->next;
 	}
 	return (res);
@@ -49,7 +48,7 @@ static int	*sort_tab(int *tab, int len)
 		while (j > 0 && tab[j - 1] > x)
 		{
 			tab[j] = tab[j - 1];
-			j = j - 1;
+			j -= 1;
 		}
 		tab[j] = x;
 		i++;
@@ -57,56 +56,28 @@ static int	*sort_tab(int *tab, int len)
 	return (tab);
 }
 
-static void	median_sort_pt2(t_node **a, t_node **b)
+static void	sort_three_ints(t_node **a, t_node **b)
 {
-	t_node	*max;
-	t_node	*max_before_last;
+	t_node	*min;
 
-	while (get_list_len(*b) > 0)
+	if (is_sort(*a))
+		return ;
+	min = get_min(*a);
+	if (*a == min)
 	{
-		max = get_max(*b);
-		max_before_last = get_min_before_last(*b);
-		while (*b != max)
-		{	
-			if (max_before_last == *b && max == (*b)->next && get_list_len(*b) > 2)
-				swap(b, "sb");
-			else
-			{
-				if (which_side_of_list(max->data, NULL, *b) == 2)
-					rev_rotate(b, "rrb");
-				else
-					rotate(b, "rb");
-			}
-		}
+		push(a, b, "pb");
+		swap(a, "sa");
 		push(b, a, "pa");
 	}
-}
-
-static void	sort_three_ints(t_node **lst)
-{
-	t_node	*tmp;
-
-	if (is_sort(*lst))
-		return ;
-	tmp = get_min(*lst);
-	if (tmp == *lst)
-	{
-		if (get_min((*lst)->next) != (*lst)->next)
-		{
-			rotate(lst, "ra");
-			swap(lst, "sa");
-			rev_rotate(lst, "rra");
-		}
-	}
+	else if ((*a)->next == min)
+		rotate(a, "ra");
 	else
-	{
-		while (tmp != *lst)
-			rotate(lst, "ra");
-	}
-	sort_three_ints(lst);
+		rev_rotate(a, "rra");
+	if (!is_sort(*a))
+		sort_three_ints(a, b);
 }
 
-static void	median_sort_pt1(t_node **a, t_node **b)
+void		median_presort(t_node **a, t_node **b)
 {
 	t_node	*tmp;
 	int		median;
@@ -138,12 +109,31 @@ static void	median_sort_pt1(t_node **a, t_node **b)
 		free(tab);
 	}
 	if (!is_sort(*a))
-		sort_three_ints(a);
+		sort_three_ints(a, b);
 	return ;
 }
 
-void		median_sort(t_node **a, t_node **b)
+void		insert_sort(t_node **a, t_node **b)
 {
-	median_sort_pt1(a, b);
-	median_sort_pt2(a, b);
+	t_node	*max;
+	t_node	*max_before_last;
+
+	while (get_list_len(*b) > 0)
+	{
+		max = get_max(*b);
+		max_before_last = get_max_before_last(*b);
+		while (*b != max)
+		{	
+			if (max_before_last == *b && max == (*b)->next && get_list_len(*b) > 2)
+				swap(b, "sb");
+			else
+			{
+				if (which_side_of_list(max->data, NULL, *b) == 2)
+					rev_rotate(b, "rrb");
+				else
+					rotate(b, "rb");
+			}
+		}
+		push(b, a, "pa");
+	}
 }

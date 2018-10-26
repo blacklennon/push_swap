@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/23 18:33:21 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 11:27:13 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@ typedef struct		s_node
 	int				data;
 	struct s_node	*next;
 }					t_node;
-
-typedef struct		s_lists
-{
-	t_node			*a;
-	t_node			*b;
-}					t_lists;
 
 /* ================ Functions prototypes ================ */
 
@@ -51,15 +45,20 @@ t_node				*new_node(t_node *lst, int nb);
 void				exit_error(char *str);
 void				exit_usage(void);
 
-/* ================ Algo ================ */
+/* ================ Utils algo ================ */
 
 int					is_sort(t_node *lst);
-void				median_sort(t_node **a, t_node **b);
-t_node				*is_in_list(int nb, char operation, t_node *lst);
 int					get_list_len(t_node *lst);
+int					which_side_of_list(int nb, t_node *node,  t_node *lst);
+t_node				*is_in_list(int nb, char operation, t_node *lst);
 t_node				*get_min(t_node *lst);
 t_node				*get_max(t_node *lst);
-t_node				*get_min_before_last(t_node *lst);
-int					which_side_of_list(int nb, t_node *node,  t_node *lst);
+t_node				*get_max_before_last(t_node *lst);
+
+/* ================ Algo ================ */
+
+void				median_presort(t_node **a, t_node **b);
+void				insert_sort(t_node **a, t_node **b);
+void				sort(t_node **a, t_node **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 23:00:33 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/16 14:51:53 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/26 11:26:19 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			which_side_of_list(int nb, t_node *node, t_node *lst)
 	return (i > (len / 2) ? 2 : 1);
 }
 
-t_node		*get_min_before_last(t_node *lst)
+t_node		*get_max_before_last(t_node *lst)
 {
 	t_node	*tmp;
 	t_node	*max;

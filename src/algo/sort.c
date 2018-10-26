@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/26 11:09:21 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 11:27:33 by pcarles          ###   ########.fr       */
+/*   Created: 2018/10/26 11:21:04 by pcarles           #+#    #+#             */
+/*   Updated: 2018/10/26 11:22:05 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include "libft.h"
 #include "push_swap.h"
 
-int			main(int const ac, char const **av)
+void sort(t_node **a, t_node **b)
 {
-	t_node	*lst_a;
-	t_node	*lst_b;
-
-	lst_a = NULL;
-	lst_b = NULL;
-	if (parse(ac, av, &lst_a) == -1)
-		exit_error("parse error");
-	sort(&lst_a, &lst_b);
-	free_lst(lst_a);
-	free_lst(lst_b);
-	return (0);
+	median_presort(a, b);
+	insert_sort(a, b);
 }
