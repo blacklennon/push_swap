@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/16 18:30:39 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/23 18:47:53 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	median_sort_pt2(t_node **a, t_node **b)
 		while (*b != max)
 		{	
 			if (max_before_last == *b && max == (*b)->next && get_list_len(*b) > 2)
-				swap_v2(b, "sb");
+				swap(b, "sb");
 			else
 			{
 				if (which_side_of_list(max->data, NULL, *b) == 2)
@@ -82,42 +82,6 @@ static void	median_sort_pt2(t_node **a, t_node **b)
 	}
 }
 
-/*
-static void median_sort_pt2(t_node **a, t_node **b)
-{
-	t_node *max;
-	t_node *max_before_last;
-	int		flag;
-
-	flag = 1;
-	while (get_list_len(*b))
-	{
-		max = get_max(*b);
-		max_before_last = flag ? get_min_before_last(*b) : max;
-		if (*b == max || *b == max_before_last)
-		{
-			flag = 1;
-			push(b, a, "pa");
-			if ((*a)->next)
-				if ((*a)->next->data < (*a)->data)
-				{
-					swap_v2(a, "sa");
-					flag = 0;
-				}
-		}
-		else
-		{
-			while (!(*b == max || *b == max_before_last))
-			{
-				if (which_side_of_list(max->data, NULL,  *b) == 2)
-					rev_rotate(b, "rrb");
-				else
-					rotate(b, "rb");
-			}
-		}
-	}
-}
-*/
 static void	sort_three_ints(t_node **lst)
 {
 	t_node	*tmp;
@@ -130,7 +94,7 @@ static void	sort_three_ints(t_node **lst)
 		if (get_min((*lst)->next) != (*lst)->next)
 		{
 			rotate(lst, "ra");
-			swap(*lst, "sa");
+			swap(lst, "sa");
 			rev_rotate(lst, "rra");
 		}
 	}
@@ -157,7 +121,7 @@ static void	median_sort_pt1(t_node **a, t_node **b)
 		else if (*tab <= 100)
 			median = tab[((*tab + 1) / 3) + 1];
 		else
-			median = tab[((*tab + 1) / 7) + 1];
+			median = tab[((*tab + 1) / 6) + 1];
 		while ((tmp = is_in_list(median, '<', *a)))
 		{
 			if ((*a)->data < median)
@@ -177,36 +141,9 @@ static void	median_sort_pt1(t_node **a, t_node **b)
 		sort_three_ints(a);
 	return ;
 }
-/*
-static void median_sort_pt3(t_node **a)
-{
-	t_node *min;
 
-	min = get_min(*a);
-	while (!is_sort(*a))
-	{
-		if ((*a)->next)
-		{
-			if ((*a)->next->data < (*a)->data)
-			{
-				swap(*a, "sa");
-				while (*a != min)
-					rotate(a, "ra");
-			}
-			else
-				rotate(a, "ra");
-		}
-		else 
-			rotate(a, "ra");
-	}
-}
-*/
 void		median_sort(t_node **a, t_node **b)
 {
 	median_sort_pt1(a, b);
 	median_sort_pt2(a, b);
-//	median_sort_pt3(a);
-//	rev_rotate(a, "rra");
-//	rev_rotate(a, "rra");
-//	rev_rotate(a, "rra");
 }

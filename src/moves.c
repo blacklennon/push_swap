@@ -6,28 +6,14 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 00:36:43 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/14 18:33:39 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/23 18:33:01 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void		swap(t_node *lst, char *to_write)
-{
-	int		tmp;
-
-	if (lst && lst->next)
-	{
-		tmp = lst->next->data;
-		lst->next->data = lst->data;
-		lst->data = tmp;
-		if (to_write)
-			ft_putendl(to_write);
-	}
-}
-
-void		swap_v2(t_node **lst, char *to_write)
+void		swap(t_node **lst, char *to_write)
 {
 	t_node	*tmp;
 

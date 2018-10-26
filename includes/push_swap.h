@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/16 14:52:55 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/23 18:33:21 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int					main(int const ac, char const **av);
 
 /* ================ Moves ================ */
 
-void				swap(t_node *lst, char *to_write);
-void				swap_v2(t_node **lst, char *to_write);
+void				swap(t_node **lst, char *to_write);
 void				push(t_node **from, t_node **to, char *to_write);
 void				rotate(t_node **lst, char *to_write);
 void				rev_rotate(t_node **lst, char *to_write);
