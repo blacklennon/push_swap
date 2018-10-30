@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 19:15:14 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/29 14:10:43 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,27 @@ static int	*sort_tab(int *tab, int len)
 	return (tab);
 }
 
+static void	push_median(int median, t_node **a, t_node **b)
+{
+	t_node	*tmp;
+
+	while ((tmp = is_in_list(median, '<', *a)))
+	{
+		if ((*a)->data < median)
+			while ((*a)->data < median)
+				push(a, b, "pb");
+		else
+		{
+			if (which_side_of_list(0, tmp, *a) == 2)
+				rev_rotate(a, "rra");
+			else
+				rotate(a, "ra");
+		}
+	}
+}
 
 void		median_presort(t_node **a, t_node **b)
 {
-	t_node	*tmp;
 	int		median;
 	int		*tab;
 
@@ -73,19 +90,7 @@ void		median_presort(t_node **a, t_node **b)
 			median = tab[((*tab + 1) / 3) + 1];
 		else
 			median = tab[((*tab + 1) / 6) + 1];
-		while ((tmp = is_in_list(median, '<', *a)))
-		{
-			if ((*a)->data < median)
-				while ((*a)->data < median)
-					push(a, b, "pb");
-			else
-			{
-				if (which_side_of_list(0, tmp, *a) == 2)
-					rev_rotate(a, "rra");
-				else
-					rotate(a, "ra");
-			}
-		}
+		push_median(median, a, b);
 		free(tab);
 	}
 	if (!is_sort(*a))
@@ -103,8 +108,9 @@ void		insert_sort(t_node **a, t_node **b)
 		max = get_max(*b);
 		max_before_last = get_max_before_last(*b);
 		while (*b != max)
-		{	
-			if (max_before_last == *b && max == (*b)->next && get_list_len(*b) > 2)
+		{
+			if (max_before_last == *b && max == (*b)->next && \
+				get_list_len(*b) > 2)
 				swap(b, "sb");
 			else
 			{

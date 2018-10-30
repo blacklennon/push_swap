@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 15:04:29 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/29 18:10:59 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			main(int const ac, char const **av)
 		exit_error("empty list");
 	op_counter = do_op(&lst_a, &lst_b, options);
 	if (op_counter == -1)
-		exit_error("invalid command (available commads: px, sx, ss, rx, rr, rrx, rrr, with x = a or x = b)");
+		exit_error("invalid command (available commands: px, sx, ss, rx, rr, rrx, rrr, with x = a or x = b)");
 	if (is_sort(lst_a) && !lst_b)
 	{
 		if (options & FLAG_CSV)

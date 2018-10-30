@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 15:15:31 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/29 17:35:18 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_node		*new_node(t_node *lst, int nb)
 	t_node	*tmp;
 
 	tmp = lst;
-	new = malloc(sizeof(*new));
+	new = (t_node *)ft_memalloc(sizeof(*new));
 	if (!new)
 		return (0);
 	new->data = nb;
@@ -58,25 +58,27 @@ void		free_lst(t_node *lst)
 
 void		exit_error(char *str)
 {
-	#if DEBUG
+	if (str && DEBUG)
+	{
 		ft_putstr_fd("Error: ", 2);
 		ft_putstr_fd(str, 2);
 		ft_putchar_fd('\n', 2);
-	#else
+	}
+	else
 		ft_putstr_fd("Error\n", 2);
-	#endif
 	exit(1);
 }
 
 void		exit_usage(void)
 {
-	ft_putstr_fd("usage: ./checker [options] numbers...\n  options:\n    -p, Print the two lists\n", 2);
+	ft_putstr_fd("usage: ./checker [options] numbers...\
+\n  options:\n    -p, Print the two lists\n", 2);
 	exit(1);
 }
 
 int			is_sort(t_node *lst)
 {
-  	if (!lst)
+	if (!lst)
 		return (0);
 	while (lst->next)
 	{

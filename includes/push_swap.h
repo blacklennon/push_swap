@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 19:16:32 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/29 16:54:58 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,31 @@ typedef struct		s_node
 	struct s_node	*next;
 }					t_node;
 
-/* ================ Functions prototypes ================ */
+/*
+** ================ Functions prototypes
+*/
 
 int					main(int const ac, char const **av);
 
-/* ================ Moves ================ */
+/*
+** ================ Moves
+*/
 
 void				swap(t_node **lst, char *to_write);
 void				push(t_node **from, t_node **to, char *to_write);
 void				rotate(t_node **lst, char *to_write);
 void				rev_rotate(t_node **lst, char *to_write);
 
-/* ================ Parser ================ */
+/*
+** ================ Parser
+*/
 
 int					parse(int const ac, char const **av, t_node **lst);
 int					do_op(t_node **a, t_node **b, int options);
 
-/* ================ Utils ================ */
+/*
+** ================ Utils
+*/
 
 void				print_lists(t_node *a, t_node *b);
 void				free_lst(t_node *lst);
@@ -47,17 +55,21 @@ t_node				*new_node(t_node *lst, int nb);
 void				exit_error(char *str);
 void				exit_usage(void);
 
-/* ================ Utils algo ================ */
+/*
+** ================ Utils algo
+*/
 
 int					is_sort(t_node *lst);
 int					get_list_len(t_node *lst);
-int					which_side_of_list(int nb, t_node *node,  t_node *lst);
+int					which_side_of_list(int nb, t_node *node, t_node *lst);
 t_node				*is_in_list(int nb, char operation, t_node *lst);
 t_node				*get_min(t_node *lst);
 t_node				*get_max(t_node *lst);
 t_node				*get_max_before_last(t_node *lst);
 
-/* ================ Algo ================ */
+/*
+** ================ Algo
+*/
 
 void				sort_three_or_less_ints(t_node **lst, char lst_name);
 void				median_presort(t_node **a, t_node **b);
