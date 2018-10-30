@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 18:19:12 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/29 16:54:58 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/30 18:33:31 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int					do_op(t_node **a, t_node **b, int options);
 */
 
 void				print_lists(t_node *a, t_node *b);
+void				print_return(t_node *a, t_node *b, \
+					int options, int op_counter);
 void				free_lst(t_node *lst);
 t_node				*new_node(t_node *lst, int nb);
 void				exit_error(char *str);
-void				exit_usage(void);
 
 /*
 ** ================ Utils algo

@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 17:38:52 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/29 17:35:18 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/30 18:36:03 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@ t_node		*new_node(t_node *lst, int nb)
 	return (lst);
 }
 
-void		print_lists(t_node *a, t_node *b)
-{
-	printf("  a  |  b  \n-----+-----\n");
-	while (a || b)
-	{
-		printf("%4d | %-4d\n", a ? a->data : 0, b ? b->data : 0);
-		if (a)
-			a = a->next;
-		if (b)
-			b = b->next;
-	}
-}
-
 void		free_lst(t_node *lst)
 {
 	if (lst)
@@ -61,18 +48,10 @@ void		exit_error(char *str)
 	if (str && DEBUG)
 	{
 		ft_putstr_fd("Error: ", 2);
-		ft_putstr_fd(str, 2);
-		ft_putchar_fd('\n', 2);
+		ft_putendl_fd(str, 2);
 	}
 	else
 		ft_putstr_fd("Error\n", 2);
-	exit(1);
-}
-
-void		exit_usage(void)
-{
-	ft_putstr_fd("usage: ./checker [options] numbers...\
-\n  options:\n    -p, Print the two lists\n", 2);
 	exit(1);
 }
 

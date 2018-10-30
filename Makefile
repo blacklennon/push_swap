@@ -15,6 +15,7 @@ C_FILES_1 = checker.c \
 			parser.c \
 			moves.c \
 			do_op.c \
+			printer.c \
 			utils.c \
 			utils_algo.c
 

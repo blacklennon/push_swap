@@ -6,12 +6,13 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 14:00:01 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/26 15:06:59 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/30 18:28:06 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
 #include "get_next_line.h"
 #include "push_swap.h"
@@ -20,6 +21,7 @@ static void	interactive_print(t_node *a, t_node *b)
 {
 	system("clear");
 	print_lists(a, b);
+	sleep(1);
 }
 
 int			do_op(t_node **a, t_node **b, int options)

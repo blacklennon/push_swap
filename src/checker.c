@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/29 18:10:59 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/30 18:44:06 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int			main(int const ac, char const **av)
 	lst_b = NULL;
 	options = parse(ac, av, &lst_a);
 	if (options == -1)
-		exit_usage();
+		exit_error("usage: ./checker [options] numbers...\
+\n  options:\n    -p, Print the two lists\n");
 	else if (options == -2)
 		exit_error("parse error");
 	list_len = get_list_len(lst_a);
@@ -36,23 +37,8 @@ int			main(int const ac, char const **av)
 		exit_error("empty list");
 	op_counter = do_op(&lst_a, &lst_b, options);
 	if (op_counter == -1)
-		exit_error("invalid command (available commands: px, sx, ss, rx, rr, rrx, rrr, with x = a or x = b)");
-	if (is_sort(lst_a) && !lst_b)
-	{
-		if (options & FLAG_CSV)
-			printf("OK;%d;%d\n", list_len, op_counter);
-		else
-			ft_putstr("OK\n");
-	}
-	else
-	{
-		if (options & FLAG_CSV)
-			printf("KO;%d;%d\n", list_len, op_counter);
-		else
-			ft_putstr("KO\n");
-	}
-	if (options & FLAG_PRINT)
-		print_lists(lst_a, lst_b);
+		exit_error("invalid command");
+	print_return(lst_a, lst_b, options, op_counter);
 	free_lst(lst_a);
 	free_lst(lst_b);
 	return (0);
