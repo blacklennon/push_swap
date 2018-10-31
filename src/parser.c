@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/29 14:02:40 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/10/31 14:49:38 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,40 @@ static void	put_arg(char const *arg, t_node **lst)
 	}
 }
 
-int			parse(int const ac, char const **av, t_node **lst)
+static int	parse_flags(int const ac, char const **av, int *options)
 {
-	int		options;
 	int		i;
 
-	options = 0;
+	*options = 0;
 	i = 1;
-	if (ac <= 1)
-		return (-1);
 	while (i < ac && *av[i] == '-')
 	{
 		if (!ft_strcmp(av[i], "-p"))
-			options |= FLAG_PRINT;
+			*options |= FLAG_PRINT;
 		else if (!ft_strcmp(av[i], "--csv"))
-			options |= FLAG_CSV;
+			*options |= FLAG_CSV;
 		else if (!ft_strcmp(av[i], "-i"))
-			options |= FLAG_INTERACTIVE;
+			*options |= FLAG_INTERACTIVE;
 		else if (arg_is_valid(av[i]))
 			break ;
 		else
 			return (-1);
 		i++;
 	}
+	return (i);
+}
+
+int			parse(int const ac, char const **av, t_node **lst)
+{
+	int		options;
+	int		i;
+
+	options = 0;
+	if (ac <= 1)
+		return (-1);
+	i = parse_flags(ac, av, &options);
+	if (i == -1)
+		return (-1);
 	while (i < ac)
 	{
 		if (!arg_is_valid(av[i]))
