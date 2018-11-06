@@ -8,9 +8,11 @@ LD_FLAGS = -g3 -fsanitize=address
 OBJDIR = obj/
 SRCDIR = src/
 INCLDIR = includes/
-LIBDIR = libft/
+LIBDIR = libftprintf/
 
-H_FILES = push_swap.h
+H_FILES = push_swap.h \
+		libft.h \
+		ft_printf.h
 C_FILES_1 = checker.c \
 			parser.c \
 			moves.c \
@@ -41,11 +43,11 @@ VPATH = $(shell find $(SRCDIR) -type d)
 all: $(BIN_1) $(BIN_2)
 
 $(BIN_1): $(OBJ_1) $(HDRS) $(LIBFT)
-	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_1) $(LD_FLAGS)
+	@$(CC) -o $@ -L$(LIBDIR) -lftprintf $(OBJ_1) $(LD_FLAGS)
 	@echo "\033[32;1mLinking $@\033[0m"
 
 $(BIN_2): $(OBJ_2) $(HDRS) $(LIBFT)
-	@$(CC) -o $@ -L$(LIBDIR) -lft $(OBJ_2) $(LD_FLAGS)
+	@$(CC) -o $@ -L$(LIBDIR) -lftprintf $(OBJ_2) $(LD_FLAGS)
 	@echo "\033[32;1mLinking $@\033[0m"
 
 $(LIBFT):

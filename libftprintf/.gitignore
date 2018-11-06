@@ -1,0 +1,8 @@
+test
+obj/
+*.swp
+libftprintf.a
+libft/obj/
+libft/libft.a
+main.c
+a.out

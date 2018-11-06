@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include "libft.h"
+#include "ft_printf.h"
 #include "push_swap.h"
 
 void		print_lists(t_node *a, t_node *b)
