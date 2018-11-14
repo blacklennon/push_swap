@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 01:47:03 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/29 14:10:43 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/11/14 16:52:26 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static int	*transform_list_in_tab(t_node *lst)
+int			*transform_list_in_tab(t_node *lst)
 {
 	int		len;
 	int		*res;
@@ -34,7 +34,7 @@ static int	*transform_list_in_tab(t_node *lst)
 	return (res);
 }
 
-static int	*sort_tab(int *tab, int len)
+int			*sort_tab(int *tab, int len)
 {
 	int		i;
 	int		j;
