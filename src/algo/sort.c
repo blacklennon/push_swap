@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 11:21:04 by pcarles           #+#    #+#             */
-/*   Updated: 2018/11/14 15:37:15 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/11/15 11:21:15 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	sort(t_node **a, t_node **b)
 {
-	master_blast_sort(a, b);
-	//median_presort(a, b);
-	//insert_sort(a, b);
+	median_presort(a, b);
+	insert_sort(a, b);
 }

@@ -29,8 +29,7 @@ C_FILES_2 = push_swap.c \
 			algo/utils_algo_2.c \
 			algo/general_algo.c \
 			algo/median_sort.c \
-			algo/sort.c \
-			algo/mine.c
+			algo/sort.c
 
 LIBFT = $(LIBDIR)libft.a
 
