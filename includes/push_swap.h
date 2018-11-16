@@ -12,10 +12,31 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
 # define DEBUG 1
+
 # define FLAG_PRINT 0x1
 # define FLAG_CSV 0x2
 # define FLAG_INTERACTIVE 0x4
+
+# define OP_PA push(e.b, e.a)
+# define OP_PB push(e.a, e.b)
+# define OP_SA swap(e.a)
+# define OP_PB swap(e.b)
+# define OP_SS swap(e.a, e.b)
+# define OP_RA rotate(e.a)
+# define OP_RB rotate(e.b)
+# define OP_RR rotate(e.a, e.b)
+# define OP_RRA rev_rotate(e.a)
+# define OP_RRB rev_rotate(e.b)
+# define OP_RRR rev_rotate(e.a, e.b)
+
+typedef struct		s_env
+{
+	struct s_node	**a;
+	struct s_node	**b;
+	struct s_node	*op;
+}					t_env;
 
 typedef struct		s_node
 {

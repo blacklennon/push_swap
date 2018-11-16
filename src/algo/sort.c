@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	sort(t_node **a, t_node **b)
+void	sort(t_env e)
 {
-	median_presort(a, b);
-	insert_sort(a, b);
+	median_presort(e.a, e.b);
+	insert_sort(e.a, e.b);
 }

@@ -18,17 +18,17 @@
 
 int			main(int const ac, char const **av)
 {
-	t_node	*lst_a;
-	t_node	*lst_b;
+	t_env	e;
 	int		parse_result;
 
-	lst_a = NULL;
-	lst_b = NULL;
-	parse_result = parse(ac, av, &lst_a);
+	e.a = NULL;
+	e.b = NULL;
+	e.op = NULL;
+	parse_result = parse(ac, av, e.a);
 	if (parse_result == -1 || parse_result == -2)
 		exit_error("parse error");
-	sort(&lst_a, &lst_b);
-	free_lst(lst_a);
-	free_lst(lst_b);
+	sort(e);
+	free_lst(e.a);
+	free_lst(e.b);
 	return (0);
 }

@@ -27,9 +27,9 @@ static void	interactive_print(t_node *a, t_node *b)
 static int	op_push(t_node **a, t_node **b, char *op)
 {
 	if (!ft_strcmp(op, "pa"))
-		push(b, a, NULL);
+		push(b, a);
 	else if (!ft_strcmp(op, "pb"))
-		push(a, b, NULL);
+		push(a, b);
 	else
 		return (-1);
 	return (0);
@@ -38,13 +38,13 @@ static int	op_push(t_node **a, t_node **b, char *op)
 static int	op_swap(t_node **a, t_node **b, char *op)
 {
 	if (!ft_strcmp(op, "sa"))
-		swap(a, NULL);
+		swap(a);
 	else if (!ft_strcmp(op, "sb"))
-		swap(b, NULL);
+		swap(b);
 	else if (!ft_strcmp(op, "ss"))
 	{
-		swap(a, NULL);
-		swap(b, NULL);
+		swap(a);
+		swap(b);
 	}
 	else
 		return (-1);
@@ -54,22 +54,22 @@ static int	op_swap(t_node **a, t_node **b, char *op)
 static int	op_rotate(t_node **a, t_node **b, char *op)
 {
 	if (!ft_strcmp(op, "ra"))
-		rotate(a, NULL);
+		rotate(a);
 	else if (!ft_strcmp(op, "rb"))
-		rotate(b, NULL);
+		rotate(b);
 	else if (!ft_strcmp(op, "rr"))
 	{
-		rotate(a, NULL);
-		rotate(b, NULL);
+		rotate(a);
+		rotate(b);
 	}
 	else if (!ft_strcmp(op, "rra"))
-		rev_rotate(a, NULL);
+		rev_rotate(a);
 	else if (!ft_strcmp(op, "rrb"))
-		rev_rotate(b, NULL);
+		rev_rotate(b);
 	else if (!ft_strcmp(op, "rrr"))
 	{
-		rev_rotate(a, NULL);
-		rev_rotate(b, NULL);
+		rev_rotate(a);
+		rev_rotate(b);
 	}
 	else
 		return (-1);

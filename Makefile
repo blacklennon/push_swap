@@ -10,9 +10,10 @@ SRCDIR = src/
 INCLDIR = includes/
 LIBDIR = libftprintf/
 
-H_FILES = push_swap.h \
-		libft.h \
-		ft_printf.h
+H_FILES = 	push_swap.h \
+			libft.h \
+			ft_printf.h
+
 C_FILES_1 = checker.c \
 			parser.c \
 			moves.c \

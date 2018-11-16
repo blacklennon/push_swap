@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void		swap(t_node **lst, char *to_write)
+void		swap(t_node **lst)
 {
 	t_node	*tmp;
 
@@ -23,12 +23,10 @@ void		swap(t_node **lst, char *to_write)
 		(*lst)->next = tmp->next;
 		tmp->next = *lst;
 		*lst = tmp;
-		if (to_write)
-			ft_putendl(to_write);
 	}
 }
 
-void		push(t_node **from, t_node **to, char *to_write)
+void		push(t_node **from, t_node **to)
 {
 	t_node	*tmp;
 
@@ -38,12 +36,10 @@ void		push(t_node **from, t_node **to, char *to_write)
 		*to = *from;
 		*from = (*from)->next;
 		(*to)->next = tmp;
-		if (to_write)
-			ft_putendl(to_write);
 	}
 }
 
-void		rotate(t_node **lst, char *to_write)
+void		rotate(t_node **lst)
 {
 	t_node	*tmp;
 
@@ -55,12 +51,10 @@ void		rotate(t_node **lst, char *to_write)
 		tmp->next = *lst;
 		*lst = (*lst)->next;
 		tmp->next->next = NULL;
-		if (to_write)
-			ft_putendl(to_write);
 	}
 }
 
-void		rev_rotate(t_node **lst, char *to_write)
+void		rev_rotate(t_node **lst)
 {
 	t_node	*tmp;
 
@@ -78,7 +72,5 @@ void		rev_rotate(t_node **lst, char *to_write)
 			else
 				tmp = tmp->next;
 		}
-		if (to_write)
-			ft_putendl(to_write);
 	}
 }
