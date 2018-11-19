@@ -15,92 +15,57 @@
 #include <unistd.h>
 #include "libft.h"
 #include "get_next_line.h"
-#include "push_swap.h"
+#include "common.h"
 
-static void	interactive_print(t_node *a, t_node *b)
+static void	op_push(t_node **a, t_node **b, t_op op)
 {
-	system("clear");
-	print_lists(a, b);
-	usleep(200000);
-}
-
-static int	op_push(t_node **a, t_node **b, char *op)
-{
-	if (!ft_strcmp(op, "pa"))
+	if (op == PA)
 		push(b, a);
-	else if (!ft_strcmp(op, "pb"))
+	else if (op == PB)
 		push(a, b);
-	else
-		return (-1);
-	return (0);
 }
 
-static int	op_swap(t_node **a, t_node **b, char *op)
+static void	op_swap(t_node **a, t_node **b, t_op op)
 {
-	if (!ft_strcmp(op, "sa"))
+	if (op == SA)
 		swap(a);
-	else if (!ft_strcmp(op, "sb"))
+	else if (op == SB)
 		swap(b);
-	else if (!ft_strcmp(op, "ss"))
+	else if (op == SS)
 	{
 		swap(a);
 		swap(b);
 	}
-	else
-		return (-1);
-	return (0);
 }
 
-static int	op_rotate(t_node **a, t_node **b, char *op)
+static void	op_rotate(t_node **a, t_node **b, t_op op)
 {
-	if (!ft_strcmp(op, "ra"))
+	if (op == RA)
 		rotate(a);
-	else if (!ft_strcmp(op, "rb"))
+	else if (op == RB)
 		rotate(b);
-	else if (!ft_strcmp(op, "rr"))
+	else if (op == RR)
 	{
 		rotate(a);
 		rotate(b);
 	}
-	else if (!ft_strcmp(op, "rra"))
+	else if (op == RRA)
 		rev_rotate(a);
-	else if (!ft_strcmp(op, "rrb"))
+	else if (op == RRB)
 		rev_rotate(b);
-	else if (!ft_strcmp(op, "rrr"))
+	else if (op == RRR)
 	{
 		rev_rotate(a);
 		rev_rotate(b);
 	}
-	else
-		return (-1);
-	return (0);
 }
 
-int			do_op(t_node **a, t_node **b, int options)
+void	do_op(t_node **a, t_node **b, t_op op_code)
 {
-	char	*tmp;
-	int		op_counter;
-	int		op_validity;
-
-	op_counter = 0;
-	options = options & FLAG_INTERACTIVE ? 1 : 0;
-	if (options)
-		interactive_print(*a, *b);
-	while (get_next_line(0, &tmp))
-	{
-		if (*tmp == 's')
-			op_validity = op_swap(a, b, tmp);
-		else if (*tmp == 'p')
-			op_validity = op_push(a, b, tmp);
-		else if (*tmp == 'r')
-			op_validity = op_rotate(a, b, tmp);
-		else
-			exit_error("bad operation");
-		if (op_validity == -1)
-			exit_error("bad operation");
-		if (options)
-			interactive_print(*a, *b);
-		op_counter++;
-	}
-	return (op_counter);
+	if (op_code == PA || op_code == PB)
+		op_push(a, b, op_code);
+	else if (op_code == SA || op_code == SB || op_code == SS)
+		op_swap(a, b, op_code);
+	else
+		op_rotate(a, b, op_code);
 }

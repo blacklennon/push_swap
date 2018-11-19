@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "common.h"
 
 void		swap(t_node **lst)
 {

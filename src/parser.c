@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "libft.h"
-#include "push_swap.h"
+#include "common.h"
 
 static long	ft_atoilong(char const *s)
 {
@@ -90,46 +90,16 @@ static void	put_arg(char const *arg, t_node **lst)
 	}
 }
 
-static int	parse_flags(int const ac, char const **av, int *options)
+int			parse(int const ac, char const **av, int index, t_node **lst)
 {
-	int		i;
-
-	*options = 0;
-	i = 1;
-	while (i < ac && *av[i] == '-')
-	{
-		if (!ft_strcmp(av[i], "-p"))
-			*options |= FLAG_PRINT;
-		else if (!ft_strcmp(av[i], "--csv"))
-			*options |= FLAG_CSV;
-		else if (!ft_strcmp(av[i], "-i"))
-			*options |= FLAG_INTERACTIVE;
-		else if (arg_is_valid(av[i]))
-			break ;
-		else
-			return (-1);
-		i++;
-	}
-	return (i);
-}
-
-int			parse(int const ac, char const **av, t_node **lst)
-{
-	int		options;
-	int		i;
-
-	options = 0;
 	if (ac <= 1)
 		return (-1);
-	i = parse_flags(ac, av, &options);
-	if (i == -1)
-		return (-1);
-	while (i < ac)
+	while (index < ac)
 	{
-		if (!arg_is_valid(av[i]))
-			return (-2);
-		put_arg(av[i], lst);
-		i++;
+		if (!arg_is_valid(av[index]))
+			return (-1);
+		put_arg(av[index], lst);
+		index++;
 	}
-	return (options);
+	return (0);
 }
