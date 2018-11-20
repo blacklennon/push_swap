@@ -1,17 +1,20 @@
-BIN_1 = checker
-BIN_2 = push_swap
+BIN_1     = checker
+BIN_2     = push_swap
 
-CC = gcc
-C_FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-LD_FLAGS = -g3 -fsanitize=address
+CC        = gcc
+C_FLAGS   = -Wall -Wextra -Werror -g3 -fsanitize=address
+LD_FLAGS  = -g3 -fsanitize=address
 
-OBJDIR = obj/
-SRCDIR = src/
-INCLDIR = includes/
-LIBDIR = libftprintf/
+OBJDIR    = obj/
+SRCDIR    = src/
+INCLDIR   = includes/
+LIBDIR    = libftprintf/
 
-H_FILES = 	push_swap.h \
+H_FILES   = common.h \
+			checker.h \
+			push_swap.h \
 			libft.h \
+			get_next_line.h \
 			ft_printf.h
 
 C_FILES_1 = checker/checker.c \
@@ -34,15 +37,15 @@ C_FILES_2 = push_swap/push_swap.c \
 			push_swap/general_algo.c \
 			push_swap/sort.c
 
-LIBFT = $(LIBDIR)libft.a
+LIBFT     = $(LIBDIR)libft.a
 
-SRC_1 = $(addprefix $(SRCDIR), $(C_FILES_1))
-OBJ_1 = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_1))))
-SRC_2 = $(addprefix $(SRCDIR), $(C_FILES_2))
-OBJ_2 = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_2))))
-HDRS = $(addprefix $(INCLDIR), $(H_FILES))
+SRC_1     = $(addprefix $(SRCDIR), $(C_FILES_1))
+OBJ_1     = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_1))))
+SRC_2     = $(addprefix $(SRCDIR), $(C_FILES_2))
+OBJ_2     = $(patsubst %.c, %.o, $(addprefix $(OBJDIR), $(notdir $(SRC_2))))
+HDRS      = $(addprefix $(INCLDIR), $(H_FILES))
 
-VPATH = $(shell find $(SRCDIR) -type d)
+VPATH     = $(shell find $(SRCDIR) -type d)
 
 all: $(BIN_1) $(BIN_2)
 

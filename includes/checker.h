@@ -8,7 +8,9 @@
 #include "common.h"
 
 int					main(int const ac, char const **av);
+
 int					read_op(t_node **a, t_node **b, int options);
+
 void				print_lists(t_node *a, t_node *b);
 void				print_return(t_node *a, t_node *b, \
 					int options, int op_counter);

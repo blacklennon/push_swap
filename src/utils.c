@@ -23,7 +23,7 @@ t_node		*new_node(t_node *lst, int nb)
 	tmp = lst;
 	new = (t_node *)ft_memalloc(sizeof(*new));
 	if (!new)
-		return (0);
+		return (NULL);
 	new->data = nb;
 	new->next = NULL;
 	if (!lst)

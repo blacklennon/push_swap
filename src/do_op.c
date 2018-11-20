@@ -10,24 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
-#include "get_next_line.h"
 #include "common.h"
 
-static void	op_push(t_node **a, t_node **b, t_op op)
+static void	op_push_swap(t_node **a, t_node **b, t_op op)
 {
 	if (op == PA)
 		push(b, a);
 	else if (op == PB)
-		push(a, b);
-}
-
-static void	op_swap(t_node **a, t_node **b, t_op op)
-{
-	if (op == SA)
+		push(a, b);  
+	else if (op == SA)
 		swap(a);
 	else if (op == SB)
 		swap(b);
@@ -62,10 +53,10 @@ static void	op_rotate(t_node **a, t_node **b, t_op op)
 
 void	do_op(t_node **a, t_node **b, t_op op_code)
 {
-	if (op_code == PA || op_code == PB)
-		op_push(a, b, op_code);
-	else if (op_code == SA || op_code == SB || op_code == SS)
-		op_swap(a, b, op_code);
+	if (op_code >= ERROR)
+		return ;
+	else if (op_code >= PA && op_code <= SS)
+		op_push_swap(a, b, op_code);
 	else
 		op_rotate(a, b, op_code);
 }
