@@ -5,3 +5,5 @@ libft/libft.a
 a.out
 push_swap
 checker
+!src/push_swap
+!src/checker
