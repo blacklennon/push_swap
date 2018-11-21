@@ -1,11 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/21 07:39:36 by pcarles           #+#    #+#             */
+/*   Updated: 2018/11/21 07:39:38 by pcarles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHECKER_H
 # define CHECKER_H
 
 # define FLAG_PRINT 0x1
 # define FLAG_CSV 0x2
 # define FLAG_INTERACTIVE 0x4
-
-#include "common.h"
 
 int					main(int const ac, char const **av);
 

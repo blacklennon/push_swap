@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "libft.h"
 #include "ft_printf.h"
+#include "common.h"
 #include "checker.h"
 
 void		print_lists(t_node *a, t_node *b)

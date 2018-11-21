@@ -17,7 +17,7 @@ H_FILES   = common.h \
 			get_next_line.h \
 			ft_printf.h
 
-C_FILES_1 = checker/checker.c \
+C_FILES_1 = checker/main_checker.c \
 			parser.c \
 			moves.c \
 			do_op.c \
@@ -26,16 +26,17 @@ C_FILES_1 = checker/checker.c \
 			push_swap/utils_algo.c \
 			utils.c
 
-C_FILES_2 = push_swap/push_swap.c \
+C_FILES_2 = push_swap/main_push_swap.c \
 			parser.c \
 			moves.c \
-			utils.c \
-			push_swap/add_op.c \
 			do_op.c \
+			utils.c \
+			push_swap/op_orchestrator.c \
+			push_swap/quick_sort.c \
+			push_swap/sort_three_ints.c \
+			push_swap/get_median.c \
 			push_swap/utils_algo.c \
-			push_swap/utils_algo_2.c \
-			push_swap/general_algo.c \
-			push_swap/sort.c
+			push_swap/optimizations.c
 
 LIBFT     = $(LIBDIR)libft.a
 

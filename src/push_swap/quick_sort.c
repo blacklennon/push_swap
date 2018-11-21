@@ -1,47 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/26 11:21:04 by pcarles           #+#    #+#             */
-/*   Updated: 2018/11/15 11:21:15 by pcarles          ###   ########.fr       */
+/*   Created: 2018/11/21 07:05:18 by pcarles           #+#    #+#             */
+/*   Updated: 2018/11/21 07:05:23 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "common.h"
 #include "push_swap.h"
-#include "libft.h"
-#include "ft_printf.h"
-
-static t_node			*is_in_liste(int nb, char operation, t_node *lst,int len)
-{
-	while (len-- && lst)
-	{
-		if (operation == '<')
-		{
-			if (lst->data < nb)
-				return (lst);
-		}
-		else if (operation == '>')
-		{
-			if (lst->data > nb)
-				return (lst);
-		}
-		else if (operation == '=')
-		{
-			if (lst->data == nb)
-				return (lst);
-		}
-		lst = lst->next;
-	}
-	return (NULL);
-}
 
 static void		backtrack(t_env *e, t_list_name name, int rotations)
 {
-	int len;
-	t_node	**list;
+	int			len;
+	t_node		**list;
 
 	list = name == A ? e->a : e->b;
 	len = get_list_len(*list);
@@ -53,57 +28,53 @@ static void		backtrack(t_env *e, t_list_name name, int rotations)
 			add_op(e, name == A ? RRA : RRB);
 }
 
-void			sort_stack_b(t_env *e, int len)
+static void		quick_sort_b(t_env *e, int len)
 {
-	int		pivot;
-	int		p;
-	int		rotations;
-	int		i;
+	int			pivot;
+	int			push;
+	int			rotations;
+	int			i;
 
+	push = 0;
 	rotations = 0;
 	i = 0;
-	p = 0;
 	if (len <= 3)
 		return (sort_three_or_less_ints(e, B, &is_inferior, len));
 	pivot = get_median(*(e->b), len);
-	while (is_in_liste(pivot, '>', *(e->b), len - i) && i++ < len)
+	while (is_in_list(pivot, *(e->b), &is_superior, len - i) && i++ < len)
 	{
-		if (e->b[0]->data > pivot && ++p)
-		{
+		if (e->b[0]->data > pivot && ++push)
 			add_op(e, PA);
-		}
 		else
 		{
 			add_op(e, RB);
 			rotations++;
 		}
 	}
-	sort_stack_a(e, p);
+	quick_sort_a(e, push);
 	backtrack(e, B, rotations);
-	sort_stack_b(e, len - p);
-	while (p--)
+	quick_sort_b(e, len - push);
+	while (push--)
 		add_op(e, PB);
 }
 
-void			sort_stack_a(t_env *e, int len)
+void			quick_sort_a(t_env *e, int len)
 {
-	int		pivot;
-	int		p;
-	int		rotations;
-	int		i;
+	int			pivot;
+	int			push;
+	int			rotations;
+	int			i;
 
+	push = 0;
 	rotations = 0;
 	i = 0;
-	p = 0;
 	if (len <= 3)
 		return (sort_three_or_less_ints(e, A, &is_superior, len));
 	pivot = get_median(*(e->a), len);
-	while (is_in_liste(pivot, '<', *(e->a), len - i) && i++ < len)
+	while (is_in_list(pivot, *(e->a), &is_inferior, len - i) && i++ < len)
 	{
-		if (e->a[0]->data < pivot && ++p)
-		{
+		if (e->a[0]->data < pivot && ++push)
 			add_op(e, PB);
-		}
 		else
 		{
 			add_op(e, RA);
@@ -111,14 +82,14 @@ void			sort_stack_a(t_env *e, int len)
 		}
 	}
 	backtrack(e, A, rotations);
-	sort_stack_a(e, len - p);
-	sort_stack_b(e, p);
-	while (p--)
+	quick_sort_a(e, len - push);
+	quick_sort_b(e, push);
+	while (push--)
 		add_op(e, PA);
 }
 
-void	sort(t_env *e)
+void			sort(t_env *e)
 {
-	sort_stack_a(e, get_list_len(*(e->a)));
+	quick_sort_a(e, get_list_len(*(e->a)));
 	add_op(e, END);
 }

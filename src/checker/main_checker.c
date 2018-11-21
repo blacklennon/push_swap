@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 00:18:58 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/30 18:44:06 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/11/21 06:57:28 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "libft.h"
 #include "get_next_line.h"
+#include "common.h"
 #include "checker.h"
 
 static int	parse_flags(int const ac, char const **av, int *options)
@@ -42,7 +43,6 @@ static int	parse_flags(int const ac, char const **av, int *options)
 int			main(int const ac, char const **av)
 {
 	int		options;
-	int		res;
 	int		op_counter;
 	int		list_len;
 	t_node	*lst_a;
@@ -50,12 +50,12 @@ int			main(int const ac, char const **av)
 
 	lst_a = NULL;
 	lst_b = NULL;
-	res = parse_flags(ac, av, &options);
-	if (res == -1)
+	op_counter = parse_flags(ac, av, &options);
+	if (op_counter == -1)
 		exit_error("usage: ./checker [options] numbers...\
 \n  options:\n    -p, Print the two lists\n");
-	res = parse(ac, av, res, &lst_a);
-	if (res == -2)
+	op_counter = parse(ac, av, op_counter, &lst_a);
+	if (op_counter == -2)
 		exit_error("parse error");
 	list_len = get_list_len(lst_a);
 	if (!lst_a)

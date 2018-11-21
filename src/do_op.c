@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 14:00:01 by pcarles           #+#    #+#             */
-/*   Updated: 2018/11/01 16:48:06 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/11/21 07:01:22 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	op_push_swap(t_node **a, t_node **b, t_op op)
 	if (op == PA)
 		push(b, a);
 	else if (op == PB)
-		push(a, b);  
+		push(a, b);
 	else if (op == SA)
 		swap(a);
 	else if (op == SB)
@@ -51,7 +51,7 @@ static void	op_rotate(t_node **a, t_node **b, t_op op)
 	}
 }
 
-void	do_op(t_node **a, t_node **b, t_op op_code)
+void		do_op(t_node **a, t_node **b, t_op op_code)
 {
 	if (op_code >= ERROR)
 		return ;

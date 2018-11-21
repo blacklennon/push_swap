@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_op.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/21 04:36:56 by pcarles           #+#    #+#             */
+/*   Updated: 2018/11/21 04:36:59 by pcarles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"
 #include "get_next_line.h"
+#include "common.h"
 #include "checker.h"
 
 static void	interactive_print(t_node *a, t_node *b)

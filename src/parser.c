@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-
-/*   Created: 2018/06/23 17:32:40 by pcarles           #+#    #+#             */
-/*   Updated: 2018/10/31 14:49:38 by pcarles          ###   ########.fr       */
+/*   Created: 2018/11/21 07:01:42 by pcarles           #+#    #+#             */
+/*   Updated: 2018/11/21 07:01:47 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +79,7 @@ static void	put_arg(char const *arg, t_node **lst)
 		if (tmp > INT_MAX || tmp < INT_MIN)
 			exit_error("int overflow");
 		number = (int)tmp;
-		if (is_in_list(number, '=', *lst))
+		if (is_in_list(number, *lst, &is_equal, get_list_len(*lst)))
 			exit_error("there is a duplicate");
 		*lst = new_node(*lst, number);
 		while (*arg == ' ' && *arg)
