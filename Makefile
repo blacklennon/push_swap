@@ -2,8 +2,8 @@ BIN_1     = checker
 BIN_2     = push_swap
 
 CC        = gcc
-C_FLAGS   = -Wall -Wextra -Werror -g3 -fsanitize=address
-LD_FLAGS  = -g3 -fsanitize=address
+C_FLAGS   = -Wall -Wextra -Werror
+LD_FLAGS  =
 
 OBJDIR    = obj/
 SRCDIR    = src/

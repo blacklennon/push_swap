@@ -33,5 +33,7 @@ int				main(int const ac, char const **av)
 	e.b = &lst_b;
 	e.op_list = op_list;
 	sort(&e);
+	free_lst(*(e.a));
+	free(e.op_list);
 	return (0);
 }

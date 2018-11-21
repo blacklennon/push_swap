@@ -54,8 +54,7 @@ int			main(int const ac, char const **av)
 	if (op_counter == -1)
 		exit_error("usage: ./checker [options] numbers...\
 \n  options:\n    -p, Print the two lists\n");
-	op_counter = parse(ac, av, op_counter, &lst_a);
-	if (op_counter == -2)
+	if (parse(ac, av, op_counter, &lst_a))
 		exit_error("parse error");
 	list_len = get_list_len(lst_a);
 	if (!lst_a)

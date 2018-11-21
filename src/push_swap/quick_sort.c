@@ -42,7 +42,6 @@ static void		quick_sort_b(t_env *e, int len)
 		return (sort_three_or_less_ints(e, B, &is_inferior, len));
 	pivot = get_median(*(e->b), len);
 	while (is_in_list(pivot, *(e->b), &is_superior, len - i) && i++ < len)
-	{
 		if (e->b[0]->data > pivot && ++push)
 			add_op(e, PA);
 		else
@@ -50,7 +49,6 @@ static void		quick_sort_b(t_env *e, int len)
 			add_op(e, RB);
 			rotations++;
 		}
-	}
 	quick_sort_a(e, push);
 	backtrack(e, B, rotations);
 	quick_sort_b(e, len - push);
@@ -72,7 +70,6 @@ void			quick_sort_a(t_env *e, int len)
 		return (sort_three_or_less_ints(e, A, &is_superior, len));
 	pivot = get_median(*(e->a), len);
 	while (is_in_list(pivot, *(e->a), &is_inferior, len - i) && i++ < len)
-	{
 		if (e->a[0]->data < pivot && ++push)
 			add_op(e, PB);
 		else
@@ -80,7 +77,6 @@ void			quick_sort_a(t_env *e, int len)
 			add_op(e, RA);
 			rotations++;
 		}
-	}
 	backtrack(e, A, rotations);
 	quick_sort_a(e, len - push);
 	quick_sort_b(e, push);

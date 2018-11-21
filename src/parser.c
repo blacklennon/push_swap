@@ -41,10 +41,21 @@ static long	ft_atoilong(char const *s)
 	return (res);
 }
 
+static int	is_arg_empty(char const *arg)
+{
+	while (*arg == ' ')
+		arg++;
+	if (*arg == '\0')
+		return (1);
+	return (0);
+}
+
 static int	arg_is_valid(char const *arg)
 {
 	char	*tmp;
 
+	if (is_arg_empty(arg))
+		return (0);
 	while (*arg)
 	{
 		while (*arg == ' ')
@@ -92,7 +103,7 @@ static void	put_arg(char const *arg, t_node **lst)
 int			parse(int const ac, char const **av, int index, t_node **lst)
 {
 	if (ac <= 1)
-		return (-1);
+		exit(0);
 	while (index < ac)
 	{
 		if (!arg_is_valid(av[index]))

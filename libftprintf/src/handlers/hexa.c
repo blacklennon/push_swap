@@ -13,13 +13,12 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-
 static int	ft_printf_put_prec(t_arg *arg, char *nb, int res)
 {
 	while (arg->precision--)
 		ft_putchar('0');
 	if (!(arg->force_hashtag && *nb == '0'))
-	ft_putstr(nb);
+		ft_putstr(nb);
 	res = ft_printf_put_width(res, arg, 1);
 	free(nb);
 	return (res);
@@ -31,7 +30,7 @@ static int	ft_printf_hexa(char *nb, t_arg *arg, char *format)
 	int		flag;
 
 	flag = 0;
-	if (arg->got_precision && !arg->precision && *nb == '0' && !arg->force_hashtag)
+	if (arg->got_precision && !arg->precision && *nb == '0')
 	{
 		while (++flag <= arg->width)
 			ft_putchar(' ');
