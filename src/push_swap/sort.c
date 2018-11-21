@@ -68,7 +68,6 @@ void			sort_stack_b(t_env *e, int len)
 	pivot = get_median(*(e->b), len);
 	while (is_in_liste(pivot, '>', *(e->b), len - i) && i++ < len)
 	{
-		ft_putstr("it works\n");
 		if (e->b[0]->data > pivot && ++p)
 		{
 			add_op(e, PA);
@@ -121,4 +120,5 @@ void			sort_stack_a(t_env *e, int len)
 void	sort(t_env *e)
 {
 	sort_stack_a(e, get_list_len(*(e->a)));
+	add_op(e, END);
 }

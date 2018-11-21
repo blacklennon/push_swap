@@ -17,7 +17,8 @@ typedef enum		e_op
 					RRB,
 					RRR,
 					ERROR,
-					END
+					END,
+					EMPTY
 }					t_op;
 
 typedef struct		s_node
