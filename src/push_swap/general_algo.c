@@ -11,25 +11,84 @@
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
 #include "libft.h"
+#include "ft_printf.h"
 #include "push_swap.h"
 
-static void	sort_three_ints(t_env *e, int x, int y, int z)
+int			is_superior(int a, int b)
 {
-	if ((x > y && y > z) || \
-		(x > y && x < z) || \
-		(y > z && x < z))
-		add_op(e, SA);
-	if (is_sort(*(e->a)))
+	return (a > b);
+}
+
+int			is_inferior(int a, int b)
+{
+	return (a < b);
+}
+
+static void	sort_three_ints(t_env *e, t_list_name name, int (*comparator)(int, int))
+{
+	int a;
+	int b;
+	int c;
+	t_node **list;
+
+	list = name == A ? e->a : e->b;
+	a = (*list)->data;
+	b = (*list)->next->data;
+	c = (*list)->next->next->data;
+	if ((comparator(a, b) && comparator(b, c)) || \
+		(comparator(a, b) && !comparator(a, c)) || \
+		(comparator(b, c) && !comparator(a, c)))
+		add_op(e, name == A ? SA : SB);
+	if (is_sort_n(*list, comparator, 3))
 		return ;
-	add_op(e, RA);
-	if (is_sort(*(e->a)))
+	add_op(e, name == A ? RA : RB);
+	if (is_sort_n(*list, comparator, 3))
 		return ;
 	else
 	{
-		add_op(e, RRA);
-		add_op(e, RRA);
+		add_op(e, name == A ? RRA : RRB);
+		add_op(e, name == A ? RRA : RRB);
 	}
+}
+
+static void	sort_three_begin(t_env *e, t_list_name name, int (*comparator)(int, int), int len)
+{
+	t_node **list;
+
+	list = name == A ? e->a : e->b;
+	while (len-- > 1)
+	{
+		if (comparator((*list)->data, (*list)->next->data))
+		{
+			add_op(e, name == A ? SA : SB);
+			add_op(e, name == A ? RA : RB);
+		}
+		else
+			add_op(e, name == A ? RA : RB);
+	}
+	while (++len < 3)
+		add_op(e, name == A ? RRA : RRB);
+	if (comparator((*list)->data, (*list)->next->data))
+		add_op(e, name == A ? SA : SB);
+}
+
+void		sort_three_or_less_ints(t_env *e, t_list_name name, int (*comparator)(int, int), int len)
+{
+	t_node	**list;
+
+	list = name == A ? e->a : e->b;
+	if (len == 1)
+		return ;
+	if (is_sort_n(*list, comparator, len))
+		return ;
+	if (len == 2 && comparator((*list)->data, (*list)->next->data))
+		add_op(e, name == A ? SA : SB);
+	else if (len == 3 && get_list_len(*list) == 3)
+		sort_three_ints(e, name, comparator);
+	else
+		sort_three_begin(e, name, comparator, len);
 }
 
 static int	*sort_tab(int *tab, int len)
@@ -54,41 +113,25 @@ static int	*sort_tab(int *tab, int len)
 	return (tab);
 }
 
-void		sort_three_or_less_ints(t_env *e)
+int			get_median(t_node *lst, int len)
 {
-	int		x;
-	int		y;
-	int		z;
+	int		i;
+	int		*tab;
+	int		n;
 
-	if (is_sort(*(e->a)))
-		return ;
-	if (get_list_len(*(e->a)) == 2)
-		add_op(e, SA);
-	else
-	{
-		x = (*(e->a))->data;
-		y = (*(e->a))->next->data;
-		z = (*(e->a))->next->next->data;
-		sort_three_ints(e, x, y, z);
-	}
-}
-
-int			get_median(t_node *lst)
-{
-	int		len;
-	int		*res;
-
-	len = get_list_len(lst);
-	res = (int *)ft_memalloc(sizeof(*res) * len);
-	if (!res)
+	i = 0;
+	n = len;
+	tab = (int *)ft_memalloc(sizeof(*tab) * len);
+	if (!tab)
 		exit_error("malloc in transform_list_in_tab() failed");
-	len = 0;
-	while (lst)
+	while (lst && n)
 	{
-		res[len] = lst->data;
-		len++;
+		tab[i++] = lst->data;
 		lst = lst->next;
+		n--;
 	}
-	res = sort_tab(res, len);
-	return (res[len/2]);
+	tab = sort_tab(tab, len);
+	i = tab[len / 2];
+	free(tab);
+	return (i);
 }

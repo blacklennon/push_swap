@@ -12,15 +12,19 @@
 
 #include "push_swap.h"
 
-int		is_revert_sort(t_node *lst)
+int		is_sort_n(t_node *lst, int (*comparator)(int, int), int len)
 {
 	if (!lst)
 		return (0);
-	while (lst->next)
+	if (len <= 0)
+		return (0);
+	len--;
+	while (lst->next && len)
 	{
-		if (lst->data < lst->next->data)
+		if (comparator(lst->data, lst->next->data))
 			return (0);
 		lst = lst->next;
+		len--;
 	}
 	return (1);
 }
