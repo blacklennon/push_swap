@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 #include "ft_printf.h"
 #include "common.h"
@@ -37,14 +36,14 @@ void		print_return(t_node *a, t_node *b, int options, int op_counter)
 	if (is_sort(a) && !b)
 	{
 		if (options & FLAG_CSV)
-			printf("OK;%d;%d\n", list_len, op_counter);
+			ft_printf("OK;%d;%d\n", list_len, op_counter);
 		else
 			ft_putstr("OK\n");
 	}
 	else
 	{
 		if (options & FLAG_CSV)
-			printf("KO;%d;%d\n", list_len, op_counter);
+			ft_printf("KO;%d;%d\n", list_len, op_counter);
 		else
 			ft_putstr("KO\n");
 	}
