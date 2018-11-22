@@ -65,6 +65,7 @@ int			read_op(t_node **a, t_node **b, int options)
 	while (get_next_line(0, &tmp))
 	{
 		op_code = op_code_conversion(tmp);
+		free(tmp);
 		if (op_code == ERROR)
 			exit_error("bad operation");
 		do_op(a, b, op_code);
