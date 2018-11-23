@@ -13,7 +13,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "libft.h"
-#include "ft_printf.h"
+#include "common.h"
 #include "push_swap.h"
 
 static void	sort_three_ints(t_env *e, t_list_name name, \

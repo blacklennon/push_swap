@@ -12,10 +12,9 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
+#include "common.h"
 #include "push_swap.h"
-#include "ft_printf.h"
 
 int				main(int const ac, char const **av)
 {
@@ -34,6 +33,8 @@ int				main(int const ac, char const **av)
 	e.op_list = op_list;
 	sort(&e);
 	free_lst(*(e.a));
-	free(e.op_list);
+	free_lst(*(e.b));
+	if (e.op_list)
+		free(e.op_list);
 	return (0);
 }

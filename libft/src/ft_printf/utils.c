@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include "private_ft_printf.h"
 
 static uintmax_t	ft_printf_pow(unsigned int nb, unsigned int pow)
 {

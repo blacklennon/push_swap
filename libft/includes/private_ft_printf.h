@@ -1,23 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 15:34:29 by pcarles           #+#    #+#             */
-/*   Updated: 2018/05/21 11:40:30 by pcarles          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef PRIVATE_FT_PRINTF_H
+# define PRIVATE_FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdint.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include "libft.h"
 
 typedef struct		s_arg
 {

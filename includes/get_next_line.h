@@ -1,1 +1,1 @@
-../libftprintf/libft/includes/get_next_line.h
+../libft/includes/get_next_line.h

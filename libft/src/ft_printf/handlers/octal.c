@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include "private_ft_printf.h"
 
 static int	ft_printf_octal(char *nb, t_arg *arg)
 {

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
+#include "private_ft_printf.h"
 
 static int	ft_printf_put_prec(t_arg *arg, char *nb, int res)
 {

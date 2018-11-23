@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <sys/types.h>
+#include "private_ft_printf.h"
 
 intmax_t	ft_printf_signed_conv(va_list ap, t_arg *arg)
 {

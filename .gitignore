@@ -7,3 +7,4 @@ push_swap
 checker
 !src/push_swap
 !src/checker
+.vscode

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include "private_ft_printf.h"
 
 void	ft_printf_plusspace(t_arg *arg)
 {

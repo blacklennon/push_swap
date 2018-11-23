@@ -50,7 +50,7 @@ static int	is_arg_empty(char const *arg)
 	return (0);
 }
 
-static int	arg_is_valid(char const *arg)
+static int	is_arg_valid(char const *arg)
 {
 	char	*tmp;
 
@@ -81,8 +81,8 @@ static int	arg_is_valid(char const *arg)
 
 static void	put_arg(char const *arg, t_node **lst)
 {
-	long		tmp;
-	int			number;
+	long	tmp;
+	int		number;
 
 	while (*arg)
 	{
@@ -93,6 +93,8 @@ static void	put_arg(char const *arg, t_node **lst)
 		if (is_in_list(number, *lst, &is_equal, get_list_len(*lst)))
 			exit_error("there is a duplicate");
 		*lst = new_node(*lst, number);
+		if (!*lst)
+			exit_error("malloc failed in put_arg()");
 		while (*arg == ' ' && *arg)
 			arg++;
 		while ((ft_isdigit(*arg) || *arg == '-') && *arg)
@@ -106,7 +108,7 @@ int			parse(int const ac, char const **av, int index, t_node **lst)
 		exit(0);
 	while (index < ac)
 	{
-		if (!arg_is_valid(av[index]))
+		if (!is_arg_valid(av[index]))
 			return (-1);
 		put_arg(av[index], lst);
 		index++;

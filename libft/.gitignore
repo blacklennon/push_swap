@@ -1,0 +1,6 @@
+bin/
+*.swp
+*.o
+libft.a
+.vscode
+.DS_Store

@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h>
+#include "private_ft_printf.h"
 
 static int	ft_printf_find_params(char const **format, va_list ap)
 {

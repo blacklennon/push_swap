@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include "private_ft_printf.h"
 
 void	ft_printf_init_handlers(int (*converter[256])(va_list ap, t_arg *arg))
 {
