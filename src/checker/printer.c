@@ -20,7 +20,14 @@ void		print_lists(t_node *a, t_node *b)
 	ft_putstr("  a  |  b  \n-----+-----\n");
 	while (a || b)
 	{
-		ft_printf("%4d | %-4d\n", a ? a->data : 0, b ? b->data : 0);
+		if (a)
+			if (b)
+				ft_printf("%4d | %-4d\n", a->data, b->data);
+			else
+				ft_printf("%4d |\n", a->data);
+		else
+			if (b)
+				ft_printf("     | %-4d\n", b->data);
 		if (a)
 			a = a->next;
 		if (b)
@@ -47,6 +54,6 @@ void		print_return(t_node *a, t_node *b, int options, int op_counter)
 		else
 			ft_putstr("KO\n");
 	}
-	if (options & FLAG_PRINT)
+	if ((options & FLAG_PRINT) && !(options & FLAG_INTERACTIVE))
 		print_lists(a, b);
 }

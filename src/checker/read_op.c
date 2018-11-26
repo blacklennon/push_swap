@@ -6,7 +6,7 @@
 /*   By: pcarles <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 04:36:56 by pcarles           #+#    #+#             */
-/*   Updated: 2018/11/21 04:36:59 by pcarles          ###   ########.fr       */
+/*   Updated: 2018/11/26 12:16:19 by pcarles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int			read_op(t_node **a, t_node **b, int options)
 	{
 		op_code = op_code_conversion(tmp);
 		free(tmp);
+		tmp = NULL;
 		if (op_code == ERROR)
 			exit_error("bad operation");
 		do_op(a, b, op_code);
@@ -73,5 +74,7 @@ int			read_op(t_node **a, t_node **b, int options)
 			interactive_print(*a, *b);
 		op_counter++;
 	}
+	if (tmp)
+		free(tmp);
 	return (op_counter);
 }
