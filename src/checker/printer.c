@@ -21,13 +21,17 @@ void		print_lists(t_node *a, t_node *b)
 	while (a || b)
 	{
 		if (a)
+		{
 			if (b)
 				ft_printf("%4d | %-4d\n", a->data, b->data);
 			else
 				ft_printf("%4d |\n", a->data);
+		}
 		else
+		{
 			if (b)
 				ft_printf("     | %-4d\n", b->data);
+		}
 		if (a)
 			a = a->next;
 		if (b)
