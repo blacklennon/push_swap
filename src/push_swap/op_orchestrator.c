@@ -12,7 +12,6 @@
 
 #include <stdlib.h>
 #include "libft.h"
-#include "ft_printf.h"
 #include "push_swap.h"
 
 static void		print_op(t_op op)
