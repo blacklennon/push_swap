@@ -8,3 +8,4 @@ checker
 !src/push_swap
 !src/checker
 .vscode
+*.dSYM
